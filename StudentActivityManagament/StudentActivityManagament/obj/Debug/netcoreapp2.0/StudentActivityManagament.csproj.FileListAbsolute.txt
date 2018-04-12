@@ -10,3 +10,15 @@ C:\Users\ciprian.sulu\Documents\StudentsManagement\StudentActivityManagament\Stu
 C:\Users\ciprian.sulu\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.AssemblyInfo.cs
 C:\Users\ciprian.sulu\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.dll
 C:\Users\ciprian.sulu\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.pdb
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\bin\Debug\netcoreapp2.0\StudentActivityManagament.deps.json
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\bin\Debug\netcoreapp2.0\StudentActivityManagament.runtimeconfig.json
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\bin\Debug\netcoreapp2.0\StudentActivityManagament.runtimeconfig.dev.json
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\bin\Debug\netcoreapp2.0\StudentActivityManagament.dll
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\bin\Debug\netcoreapp2.0\StudentActivityManagament.pdb
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.csprojResolveAssemblyReference.cache
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.csproj.CoreCompileInputs.cache
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.AssemblyInfoInputs.cache
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.AssemblyInfo.cs
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.dll
+C:\Users\Cipada\Documents\StudentsManagement\StudentActivityManagament\StudentActivityManagament\obj\Debug\netcoreapp2.0\StudentActivityManagament.pdb

@@ -664,26 +664,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ciprian.sulu\\.nuget\\packages\\": {},
+    "C:\\Users\\Cipada\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
       "projectName": "StudentsManagament.Core.Shared",
-      "projectPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
-      "packagesPath": "C:\\Users\\ciprian.sulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\obj\\",
+      "projectPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
+      "packagesPath": "C:\\Users\\Cipada\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ciprian.sulu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Cipada\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -710,7 +707,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },

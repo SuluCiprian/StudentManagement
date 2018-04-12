@@ -196,6 +196,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "StudentsManagament.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/StudentsManagament.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StudentsManagament.Domain.dll": {}
+        }
       }
     }
   },
@@ -656,34 +666,37 @@
         "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "StudentsManagament.Domain/1.0.0": {
+      "type": "project",
+      "path": "../StudentsManagament.Domain/StudentsManagament.Domain.csproj",
+      "msbuildProject": "../StudentsManagament.Domain/StudentsManagament.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "StudentsManagament.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ciprian.sulu\\.nuget\\packages\\": {},
+    "C:\\Users\\Cipada\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
       "projectName": "StudentsManagement.Persistence",
-      "projectPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
-      "packagesPath": "C:\\Users\\ciprian.sulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\obj\\",
+      "projectPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
+      "packagesPath": "C:\\Users\\Cipada\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ciprian.sulu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Cipada\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -695,7 +708,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Domain\\StudentsManagament.Domain.csproj": {
+              "projectPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Domain\\StudentsManagament.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -710,7 +727,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },

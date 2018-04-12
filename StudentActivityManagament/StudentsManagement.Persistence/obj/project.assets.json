@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
       "projectName": "StudentsManagement.Persistence",
-      "projectPath": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
+      "projectPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj",
       "packagesPath": "C:\\Users\\ciprian.sulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentsManagement.Persistence\\obj\\",
+      "outputPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

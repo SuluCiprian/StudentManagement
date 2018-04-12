@@ -13125,11 +13125,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentActivityManagament\\StudentActivityManagament.csproj",
+      "projectUniqueName": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentActivityManagament\\StudentActivityManagament.csproj",
       "projectName": "StudentActivityManagament",
-      "projectPath": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentActivityManagament\\StudentActivityManagament.csproj",
+      "projectPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentActivityManagament\\StudentActivityManagament.csproj",
       "packagesPath": "C:\\Users\\ciprian.sulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentActivityManagament\\obj\\",
+      "outputPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentActivityManagament\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

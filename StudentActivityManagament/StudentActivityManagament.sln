@@ -15,6 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagament.Persiste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagament.Domain", "StudentsManagament.Domain\StudentsManagament.Domain.csproj", "{8FA8C1ED-AE29-4928-A355-C76617EE12C3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{834980B8-AF69-4F7D-869B-9F1FE0E740C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{91C51A0A-EB6B-429E-86FA-1350B7F796E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{0ACD9CBC-47AC-4F59-BA5A-5F1AAD50B099}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{30642557-49CF-4BFC-92B8-70B5734659FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +56,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD3EDA09-8442-4A5A-AC3D-1C7E0EE4A36B} = {0ACD9CBC-47AC-4F59-BA5A-5F1AAD50B099}
+		{2EEC0A6F-42E2-409C-8985-638CC9BD6F81} = {834980B8-AF69-4F7D-869B-9F1FE0E740C7}
+		{A40BDA11-03DC-49BB-9082-AD88660E04F9} = {834980B8-AF69-4F7D-869B-9F1FE0E740C7}
+		{FDC37C6D-2FEB-4716-8CC2-9986BEE53E49} = {91C51A0A-EB6B-429E-86FA-1350B7F796E9}
+		{A8D64216-D179-4A90-85B6-AB2E40B51EF0} = {91C51A0A-EB6B-429E-86FA-1350B7F796E9}
+		{8FA8C1ED-AE29-4928-A355-C76617EE12C3} = {30642557-49CF-4BFC-92B8-70B5734659FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57F25A6A-A040-4707-AB1D-C761542798C7}

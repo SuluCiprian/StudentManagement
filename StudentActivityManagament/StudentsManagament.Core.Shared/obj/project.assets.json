@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
       "projectName": "StudentsManagament.Core.Shared",
-      "projectPath": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
+      "projectPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\StudentsManagament.Core.Shared.csproj",
       "packagesPath": "C:\\Users\\ciprian.sulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ciprian.sulu\\source\\repos\\StudentActivityManagament\\StudentsManagament.Core.Shared\\obj\\",
+      "outputPath": "C:\\Users\\ciprian.sulu\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Core.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

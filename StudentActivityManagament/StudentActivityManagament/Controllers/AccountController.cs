@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using StudentActivityManagament.Models;
 using StudentActivityManagament.Models.AccountViewModels;
 using StudentActivityManagament.Services;
+using StudentsManagament.Core.Shared;
 
 namespace StudentActivityManagament.Controllers
 {
@@ -24,13 +25,16 @@ namespace StudentActivityManagament.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly IBusinessLogic _businessLogic;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
+            IBusinessLogic businessLogic,
             ILogger<AccountController> logger)
         {
+            _businessLogic = businessLogic;
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;

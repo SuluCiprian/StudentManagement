@@ -33,8 +33,9 @@ namespace StudentActivityManagament
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailSender, EmailSender>(instance => new EmailSender());
 
             services.AddMvc();
         }

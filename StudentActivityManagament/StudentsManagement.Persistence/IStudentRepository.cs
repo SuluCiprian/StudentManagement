@@ -7,5 +7,6 @@ namespace StudentsManagement.Persistence
 {
     public interface IStudentRepository : IRepository<Student>
     {
+        IEnumerable<Student> GetStudentsByActivityId(int id);
     }
 }

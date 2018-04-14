@@ -3,34 +3,43 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace StudentsManagament.Persistence.EF
 {
-    public class Repository<T> : IRepository<T>
+    public class Repository<T> : IRepository<T> where T : class
     {
+        protected readonly DbContext Context;
+
+        public Repository(DbContext context)
+        {
+            Context = context;
+        }
+
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            Context.Set<T>().Remove(entity);
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().ToList();
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().Find(id);
         }
 
         public void Insert(T entity)
         {
-            throw new NotImplementedException();
+            Context.Set<T>().Add(entity);
         }
 
         public IEnumerable<T> SearchFor(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().Where(predicate);
         }
     }
 }

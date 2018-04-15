@@ -26,7 +26,9 @@
           "Microsoft.AspNetCore.All": "2.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
+          "StudentsManagament.Persistence.EF": "1.0.0",
+          "StudentsManagement.Persistence": "1.0.0"
         },
         "runtime": {
           "StudentActivityManagament.dll": {}
@@ -4055,6 +4057,40 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "StudentsManagament.Domain/1.0.0": {
+        "runtime": {
+          "StudentsManagament.Domain.dll": {}
+        },
+        "compile": {
+          "StudentsManagament.Domain.dll": {}
+        }
+      },
+      "StudentsManagament.Persistence.EF/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
+          "StudentsManagament.Domain": "1.0.0",
+          "StudentsManagement.Persistence": "1.0.0"
+        },
+        "runtime": {
+          "StudentsManagament.Persistence.EF.dll": {}
+        },
+        "compile": {
+          "StudentsManagament.Persistence.EF.dll": {}
+        }
+      },
+      "StudentsManagement.Persistence/1.0.0": {
+        "dependencies": {
+          "StudentsManagament.Domain": "1.0.0"
+        },
+        "runtime": {
+          "StudentsManagement.Persistence.dll": {}
+        },
+        "compile": {
+          "StudentsManagement.Persistence.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
@@ -6366,6 +6402,21 @@
       "sha512": "sha512-W6ZZ0/o7+3Qb77mRAQyLjPudHG3OMeeQ4p9yY13PUdJArmRCx2cLMm5F4tpIjJXxzHC0ew0oK7DMDGILMdfCnw==",
       "path": "windowsazure.storage/8.1.4",
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
+    },
+    "StudentsManagament.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentsManagament.Persistence.EF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentsManagement.Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.NETCore.App/2.0.0": {
       "type": "package",

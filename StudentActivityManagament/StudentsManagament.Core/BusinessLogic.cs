@@ -33,7 +33,7 @@ namespace StudentsManagament.Core
         {
             foreach (var item in initList)
             {
-                item.Initialize(serviceCollection);
+               // item.Initialize(serviceCollection);
             }
         }
     }

@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using StudentActivityManagament.Data;
 using StudentActivityManagament.Models;
 using StudentActivityManagament.Services;
+using StudentsManagament.Persistence.EF;
+using StudentsManagement.Persistence;
 
 namespace StudentActivityManagament
 {
@@ -29,12 +31,17 @@ namespace StudentActivityManagament
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDbContext<StudentsManagamentContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("StudentsManagament")));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailSender, EmailSender>(instance => new EmailSender());
 
             services.AddMvc();
         }

@@ -8,5 +8,10 @@ namespace StudentsManagament.Persistence.EF
 {
     public class TeacherRepository : Repository<Teacher>, ITeacherRepository
     {
+        public TeacherRepository(StudentsManagamentContext context)
+            : base(context)
+        {
+
+        }
     }
 }

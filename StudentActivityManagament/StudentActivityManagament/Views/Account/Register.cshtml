@@ -25,18 +25,6 @@
                 <label asp-for="ConfirmPassword"></label>
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                <div class="radio">
-                    <label asp-for="Student">
-                        <input asp-for="Student" value="C" type="radio" name="optradio" />
-                        @Html.DisplayNameFor(m => m.Student)
-                    </label>
-                </div>
-                <div class="radio">
-                    <label asp-for="Teacher">
-                        <input asp-for="Teacher" value="C" type="radio" name="optradio" />
-                        @Html.DisplayNameFor(m => m.Teacher)
-                    </label>
-                </div>
             </div>
             <button type="submit" class="btn btn-default">Register</button>
         </form>

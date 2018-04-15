@@ -19,10 +19,6 @@ namespace StudentActivityManagament.Models.AccountViewModels
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
 
-        [Display(Name = "Student")]
-        public bool Student { get; set; }
-
-        [Display(Name = "Teacher")]
-        public bool Teacher { get; set; }
+        
     }
 }

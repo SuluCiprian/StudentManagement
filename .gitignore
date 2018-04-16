@@ -8,9 +8,10 @@ StudentActivityManagament/.vs/StudentActivityManagament/v15/.suo
 StudentActivityManagament/.vs/StudentActivityManagament/v15/.suo
 StudentActivityManagament/.vs/**
 StudentActivityManagament/.vs/*.suo
-StudentActivityManagament/.vs/
+.vs/
 StudentActivityManagament/StudentActivityManagament/bin/*.*
 StudentActivityManagament/**/bin/
 StudentActivityManagament/**/obj/
 
+*.suo
 *.ide

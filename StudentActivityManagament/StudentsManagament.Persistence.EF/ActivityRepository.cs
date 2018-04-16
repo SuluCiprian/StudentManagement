@@ -8,5 +8,6 @@ namespace StudentsManagament.Persistence.EF
 {
     public class ActivityRepository : Repository<Activity>, IActivityRepository
     {
+
     }
 }

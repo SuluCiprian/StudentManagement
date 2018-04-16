@@ -1,20 +1,23 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using StudentsManagament.Core.Shared;
+using StudentsManagement.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace StudentsManagament.Core
 {
-    class BusinessLogic: IBusinessLogic
+    public class BusinessLogic: IBusinessLogic
     {
-        AuthenticationService service;
+        IAuthenticationService service;
         List<IInitializer> initList;
         AccountLogic account;
+        private IPersistContext persistContext;
 
-        public BusinessLogic()
+        public BusinessLogic(IPersistContext persistContext)
         {
+            this.persistContext = persistContext;
             account = new AccountLogic();
             //service.Add(account);
         }
@@ -24,9 +27,14 @@ namespace StudentsManagament.Core
             throw new NotImplementedException();
         }
 
-        public IAuthenticationService GetAuthenticationService()
+        public Shared.IAuthenticationService GetAuthenticationService()
         {
             return service;
+        }
+
+        public IStudentService GetStudentService()
+        {
+            throw new NotImplementedException();
         }
 
         public void Initialize(IServiceCollection serviceCollection)

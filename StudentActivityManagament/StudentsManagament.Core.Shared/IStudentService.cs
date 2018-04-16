@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsManagament.Core
+namespace StudentsManagament.Core.Shared
 {
-    public class AccountLogic
+    public interface IStudentService
     {
     }
 }

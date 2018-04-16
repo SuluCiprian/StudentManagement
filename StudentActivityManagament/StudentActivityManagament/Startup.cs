@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StudentActivityManagament.Data;
 using StudentActivityManagament.Models;
 using StudentActivityManagament.Services;
+using StudentsManagament.Core.Shared;
 
 namespace StudentActivityManagament
 {
@@ -36,7 +37,8 @@ namespace StudentActivityManagament
             
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>(instance => new EmailSender());
-
+            var um = services.BuildServiceProvider().GetService<UserManager<ApplicationUser>>();
+            services.AddTransient<IAuthenticationService>();
             services.AddMvc();
         }
 

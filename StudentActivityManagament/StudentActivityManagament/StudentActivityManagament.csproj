@@ -18,4 +18,13 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StudentsManagament.Core.Shared\StudentsManagament.Core.Shared.csproj" />
+    <ProjectReference Include="..\StudentsManagement.Authentication\StudentsManagement.Authentication.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>

@@ -21,24 +21,17 @@ namespace StudentActivityManagament.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IEmailSender _emailSender;
-        private readonly ILogger _logger;
-        private readonly IBusinessLogic _businessLogic;
+        private readonly StudentsManagament.Core.Shared.IAuthenticationService authenticationService;
+        private readonly ILogger logger;
+        private readonly IBusinessLogic businessLogic;
 
         public AccountController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            IEmailSender emailSender,
+
             IBusinessLogic businessLogic,
             ILogger<AccountController> logger)
         {
-            _businessLogic = businessLogic;
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _emailSender = emailSender;
-            _logger = logger;
+            this.businessLogic = businessLogic;
+            this.logger = logger;
         }
 
         [TempData]
@@ -60,35 +53,19 @@ namespace StudentActivityManagament.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
+            IActionResult retVal = View(model);
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                bool loginSuccessful = await authenticationService.Login(model.Email, model.Password, model.RememberMe);
+                if (loginSuccessful)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, model.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToAction(nameof(Lockout));
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(model);
+                    logger.LogInformation("User logged in.");
+                    retVal = RedirectToLocal(returnUrl);
                 }
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return retVal;
         }
 
         [HttpGet]

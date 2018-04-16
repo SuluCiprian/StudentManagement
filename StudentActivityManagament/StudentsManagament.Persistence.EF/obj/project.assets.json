@@ -699,23 +699,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Cipada\\.nuget\\packages\\": {},
+    "C:\\Users\\razvan.popescu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Persistence.EF\\StudentsManagament.Persistence.EF.csproj",
+      "projectUniqueName": "D:\\GitHub\\StudentManagement\\StudentActivityManagament\\StudentsManagament.Persistence.EF\\StudentsManagament.Persistence.EF.csproj",
       "projectName": "StudentsManagament.Persistence.EF",
-      "projectPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Persistence.EF\\StudentsManagament.Persistence.EF.csproj",
-      "packagesPath": "C:\\Users\\Cipada\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Persistence.EF\\obj\\",
+      "projectPath": "D:\\GitHub\\StudentManagement\\StudentActivityManagament\\StudentsManagament.Persistence.EF\\StudentsManagament.Persistence.EF.csproj",
+      "packagesPath": "C:\\Users\\razvan.popescu\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\StudentManagement\\StudentActivityManagament\\StudentsManagament.Persistence.EF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Cipada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\razvan.popescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -728,11 +731,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Domain\\StudentsManagament.Domain.csproj": {
-              "projectPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagament.Domain\\StudentsManagament.Domain.csproj"
+            "D:\\GitHub\\StudentManagement\\StudentActivityManagament\\StudentsManagament.Domain\\StudentsManagament.Domain.csproj": {
+              "projectPath": "D:\\GitHub\\StudentManagement\\StudentActivityManagament\\StudentsManagament.Domain\\StudentsManagament.Domain.csproj"
             },
-            "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj": {
-              "projectPath": "C:\\Users\\Cipada\\Documents\\StudentsManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj"
+            "D:\\GitHub\\StudentManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj": {
+              "projectPath": "D:\\GitHub\\StudentManagement\\StudentActivityManagament\\StudentsManagement.Persistence\\StudentsManagement.Persistence.csproj"
             }
           }
         }
@@ -749,7 +752,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "2.0.0",
             "autoReferenced": true
           }
         },

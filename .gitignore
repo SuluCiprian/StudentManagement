@@ -5,3 +5,10 @@ StudentActivityManagament/.vs/StudentActivityManagament/v15/Server/sqlite3/stora
 StudentActivityManagament/.vs/StudentActivityManagament/v15/.suo
 StudentActivityManagament/.vs/StudentActivityManagament/v15/.suo
 StudentActivityManagament/.vs/StudentActivityManagament/v15/.suo
+StudentActivityManagament/.vs/StudentActivityManagament/v15/.suo
+StudentActivityManagament/.vs/StudentActivityManagament/v15/.suo
+StudentActivityManagament/StudentActivityManagament/bin/*.*
+StudentActivityManagament/*/bin/
+StudentActivityManagament/*/obj/
+
+*.ide

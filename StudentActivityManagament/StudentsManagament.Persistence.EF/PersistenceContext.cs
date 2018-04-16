@@ -7,7 +7,7 @@ using System.Text;
 
 namespace StudentsManagament.Persistence.EF
 {
-    class PersistenceContext : IPersistContext
+    public class PersistenceContext : IPersistContext
     {
         public void Configure(IApplicationBuilder app)
         {
@@ -33,5 +33,6 @@ namespace StudentsManagament.Persistence.EF
         {
             throw new NotImplementedException();
         }
+
     }
 }

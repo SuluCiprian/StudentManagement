@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentActivityManagament", "StudentActivityManagament\StudentActivityManagament.csproj", "{BD3EDA09-8442-4A5A-AC3D-1C7E0EE4A36B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentActivityManagament", "StudentActivityManagament\StudentActivityManagament.csproj", "{BD3EDA09-8442-4A5A-AC3D-1C7E0EE4A36B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagament.Core", "StudentsManagament.Core\StudentsManagament.Core.csproj", "{2EEC0A6F-42E2-409C-8985-638CC9BD6F81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagament.Core", "StudentsManagament.Core\StudentsManagament.Core.csproj", "{2EEC0A6F-42E2-409C-8985-638CC9BD6F81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagament.Core.Shared", "StudentsManagament.Core.Shared\StudentsManagament.Core.Shared.csproj", "{A40BDA11-03DC-49BB-9082-AD88660E04F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagament.Core.Shared", "StudentsManagament.Core.Shared\StudentsManagament.Core.Shared.csproj", "{A40BDA11-03DC-49BB-9082-AD88660E04F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagement.Persistence", "StudentsManagement.Persistence\StudentsManagement.Persistence.csproj", "{FDC37C6D-2FEB-4716-8CC2-9986BEE53E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Persistence", "StudentsManagement.Persistence\StudentsManagement.Persistence.csproj", "{FDC37C6D-2FEB-4716-8CC2-9986BEE53E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagament.Persistence.EF", "StudentsManagament.Persistence.EF\StudentsManagament.Persistence.EF.csproj", "{A8D64216-D179-4A90-85B6-AB2E40B51EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagament.Persistence.EF", "StudentsManagament.Persistence.EF\StudentsManagament.Persistence.EF.csproj", "{A8D64216-D179-4A90-85B6-AB2E40B51EF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagament.Domain", "StudentsManagament.Domain\StudentsManagament.Domain.csproj", "{8FA8C1ED-AE29-4928-A355-C76617EE12C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagament.Domain", "StudentsManagament.Domain\StudentsManagament.Domain.csproj", "{8FA8C1ED-AE29-4928-A355-C76617EE12C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{834980B8-AF69-4F7D-869B-9F1FE0E740C7}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{0ACD9CBC-47AC-4F59-BA5A-5F1AAD50B099}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{30642557-49CF-4BFC-92B8-70B5734659FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagement.Authentication", "StudentsManagement.Authentication\StudentsManagement.Authentication.csproj", "{594B6AD2-58D7-4720-8159-5A3CB9E9772D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{8FA8C1ED-AE29-4928-A355-C76617EE12C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FA8C1ED-AE29-4928-A355-C76617EE12C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FA8C1ED-AE29-4928-A355-C76617EE12C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594B6AD2-58D7-4720-8159-5A3CB9E9772D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594B6AD2-58D7-4720-8159-5A3CB9E9772D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594B6AD2-58D7-4720-8159-5A3CB9E9772D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594B6AD2-58D7-4720-8159-5A3CB9E9772D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{FDC37C6D-2FEB-4716-8CC2-9986BEE53E49} = {91C51A0A-EB6B-429E-86FA-1350B7F796E9}
 		{A8D64216-D179-4A90-85B6-AB2E40B51EF0} = {91C51A0A-EB6B-429E-86FA-1350B7F796E9}
 		{8FA8C1ED-AE29-4928-A355-C76617EE12C3} = {30642557-49CF-4BFC-92B8-70B5734659FD}
+		{594B6AD2-58D7-4720-8159-5A3CB9E9772D} = {30642557-49CF-4BFC-92B8-70B5734659FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57F25A6A-A040-4707-AB1D-C761542798C7}

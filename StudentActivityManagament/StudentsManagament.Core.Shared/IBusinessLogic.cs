@@ -4,8 +4,9 @@ using System.Text;
 
 namespace StudentsManagament.Core.Shared
 {
-    public interface IBusinessLogic: IInitializer
+    public interface IBusinessLogic : IInitializer
     {
-         IAuthenticationService GetAuthenticationService();
+        IAuthenticationService GetAuthenticationService();
+        IStudentService GetStudentService();
     }
 }

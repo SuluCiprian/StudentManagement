@@ -15,6 +15,11 @@ namespace StudentsManagament.Persistence.EF
 
         }
 
+        public IEnumerable<Activity> GetActivities()
+        {
+            return StudentsManagamentContext.Activities.ToList();
+        }
+
         public StudentsManagamentContext StudentsManagamentContext
         {
             get

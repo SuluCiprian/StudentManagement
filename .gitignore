@@ -1,6 +1,6 @@
-StudentActivityManagament/.vs/*.suo
+**/.vs/*.suo
 *.suo
-.vs/
+**/.vs/
 StudentActivityManagament/.vs/StudentActivityManagament/v15/Server/sqlite3/db.lock
 StudentActivityManagament/.vs/StudentActivityManagament/v15/Server/sqlite3/storage.ide-shm
 StudentActivityManagament/.vs/StudentActivityManagament/v15/Server/sqlite3/storage.ide-wal
@@ -13,3 +13,4 @@ StudentActivityManagament/StudentActivityManagament/bin/*.*
 StudentActivityManagament/**/bin/
 StudentActivityManagament/**/obj/
 *.ide
+*.suo

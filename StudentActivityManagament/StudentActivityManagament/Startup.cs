@@ -13,6 +13,9 @@ using StudentActivityManagament.Models;
 using StudentActivityManagament.Services;
 using StudentsManagament.Persistence.EF;
 using StudentsManagement.Persistence;
+using StudentsManagament.Core.Shared;
+using StudentsManagement.Authentication;
+using StudentsManagament.Core;
 
 namespace StudentActivityManagament
 {
@@ -42,7 +45,8 @@ namespace StudentActivityManagament
             
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>(instance => new EmailSender());
-
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
+            services.AddTransient<IBusinessLogic, BusinessLogic>();
             services.AddMvc();
         }
 

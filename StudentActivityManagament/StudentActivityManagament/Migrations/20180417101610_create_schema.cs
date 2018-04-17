@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StudentActivityManagament.Migrations
 {
-    public partial class migration : Migration
+    public partial class create_schema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

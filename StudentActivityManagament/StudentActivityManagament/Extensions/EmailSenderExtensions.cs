@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using StudentActivityManagament.Services;
+using StudentsManagament.Core.Shared;
 
 namespace StudentActivityManagament.Services
 {

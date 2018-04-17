@@ -12,7 +12,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
           "StudentsManagament.Domain": "1.0.0",
-          "StudentsManagement.Persistence": "1.0.0"
+          "StudentsManagement.Persistence": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.0.0.0"
         },
         "runtime": {
           "StudentsManagament.Persistence.EF.dll": {}
@@ -452,6 +453,11 @@
         "runtime": {
           "StudentsManagement.Persistence.dll": {}
         }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.0.0.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.Http.Abstractions.dll": {}
+        }
       }
     }
   },
@@ -832,6 +838,11 @@
     },
     "StudentsManagement.Persistence/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

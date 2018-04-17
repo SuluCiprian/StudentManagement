@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentsManagement.Persistence;
 
@@ -16,6 +17,7 @@ namespace StudentActivityManagament.Controllers
             _unitOfwork = unitOfWork;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             ViewData["Message"] = "Your application activities page.";

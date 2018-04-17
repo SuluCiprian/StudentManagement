@@ -11,14 +11,13 @@ using System;
 namespace StudentActivityManagament.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180415092251_MyFirstMigration")]
-    partial class MyFirstMigration
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
+                .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -129,7 +128,7 @@ namespace StudentActivityManagament.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("StudentActivityManagament.Models.ApplicationUser", b =>
+            modelBuilder.Entity("StudentsManagement.Authentication.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -190,7 +189,7 @@ namespace StudentActivityManagament.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("StudentActivityManagament.Models.ApplicationUser")
+                    b.HasOne("StudentsManagement.Authentication.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -198,7 +197,7 @@ namespace StudentActivityManagament.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("StudentActivityManagament.Models.ApplicationUser")
+                    b.HasOne("StudentsManagement.Authentication.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -211,7 +210,7 @@ namespace StudentActivityManagament.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("StudentActivityManagament.Models.ApplicationUser")
+                    b.HasOne("StudentsManagement.Authentication.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -219,7 +218,7 @@ namespace StudentActivityManagament.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("StudentActivityManagament.Models.ApplicationUser")
+                    b.HasOne("StudentsManagement.Authentication.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

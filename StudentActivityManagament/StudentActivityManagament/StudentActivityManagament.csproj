@@ -20,10 +20,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StudentsManagament.Core.Shared\StudentsManagament.Core.Shared.csproj" />
+    <ProjectReference Include="..\StudentsManagament.Core\StudentsManagament.Core.csproj" />
+    <ProjectReference Include="..\StudentsManagament.Persistence.EF\StudentsManagament.Persistence.EF.csproj" />
     <ProjectReference Include="..\StudentsManagement.Authentication\StudentsManagement.Authentication.csproj" />
+    <ProjectReference Include="..\StudentsManagement.Persistence\StudentsManagement.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Migrations\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

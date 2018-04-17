@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StudentActivityManagament.Models;
+using StudentsManagement.Authentication;
 
 namespace StudentActivityManagament.Data
 {

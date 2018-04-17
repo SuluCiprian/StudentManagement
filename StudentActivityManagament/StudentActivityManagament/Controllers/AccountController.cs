@@ -26,10 +26,11 @@ namespace StudentActivityManagament.Controllers
         private readonly IBusinessLogic businessLogic;
 
         public AccountController(
-
+            StudentsManagament.Core.Shared.IAuthenticationService authService,
             IBusinessLogic businessLogic,
             ILogger<AccountController> logger)
         {
+            this.authenticationService = authService;
             this.businessLogic = businessLogic;
             this.logger = logger;
         }
@@ -67,7 +68,7 @@ namespace StudentActivityManagament.Controllers
             }
             return retVal;
         }
-
+        /*
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> LoginWith2fa(bool rememberMe, string returnUrl = null)
@@ -85,7 +86,8 @@ namespace StudentActivityManagament.Controllers
 
             return View(model);
         }
-
+        */
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -123,7 +125,8 @@ namespace StudentActivityManagament.Controllers
                 return View();
             }
         }
-
+        */
+        /*
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> LoginWithRecoveryCode(string returnUrl = null)
@@ -139,7 +142,8 @@ namespace StudentActivityManagament.Controllers
 
             return View();
         }
-
+        */
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -177,7 +181,7 @@ namespace StudentActivityManagament.Controllers
                 return View();
             }
         }
-
+        */
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Lockout()
@@ -193,44 +197,36 @@ namespace StudentActivityManagament.Controllers
             return View();
         }
 
+        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+            IActionResult retVal = View(model);
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                bool loginSuccessful = await authenticationService.Register(model.Email, model.Password);
+                if (loginSuccessful)
                 {
-                    _logger.LogInformation("User created a new account with password.");
-
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    retVal = RedirectToLocal(returnUrl);
                 }
-                AddErrors(result);
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return retVal;
         }
-
+        
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
+            await authenticationService.Logout();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
-
+        
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -241,7 +237,8 @@ namespace StudentActivityManagament.Controllers
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
             return Challenge(properties, provider);
         }
-
+        */
+        /*
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
@@ -277,7 +274,8 @@ namespace StudentActivityManagament.Controllers
                 return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
             }
         }
-
+        */
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -309,11 +307,13 @@ namespace StudentActivityManagament.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View(nameof(ExternalLogin), model);
         }
+        */
 
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
+            /*
             if (userId == null || code == null)
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
@@ -325,15 +325,17 @@ namespace StudentActivityManagament.Controllers
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            */
+            return null;
         }
-
+        
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
             return View();
         }
-
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -360,7 +362,8 @@ namespace StudentActivityManagament.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        */
+        
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPasswordConfirmation()
@@ -379,7 +382,7 @@ namespace StudentActivityManagament.Controllers
             var model = new ResetPasswordViewModel { Code = code };
             return View(model);
         }
-
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -403,7 +406,7 @@ namespace StudentActivityManagament.Controllers
             AddErrors(result);
             return View();
         }
-
+        */
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ResetPasswordConfirmation()

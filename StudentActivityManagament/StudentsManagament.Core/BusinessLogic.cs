@@ -13,11 +13,11 @@ namespace StudentsManagament.Core
         IAuthenticationService service;
         List<IInitializer> initList;
         AccountLogic account;
-        private IPersistContext persistContext;
+        private IUnitOfWork unitOfWork;
 
-        public BusinessLogic(IPersistContext persistContext)
+        public BusinessLogic(IUnitOfWork unitOfWork)
         {
-            this.persistContext = persistContext;
+            this.unitOfWork = unitOfWork;
             account = new AccountLogic();
             //service.Add(account);
         }
@@ -26,6 +26,7 @@ namespace StudentsManagament.Core
         {
             throw new NotImplementedException();
         }
+        
 
         public Shared.IAuthenticationService GetAuthenticationService()
         {
@@ -37,6 +38,7 @@ namespace StudentsManagament.Core
             throw new NotImplementedException();
         }
 
+        
         public void Initialize(IServiceCollection serviceCollection)
         {
             foreach (var item in initList)
@@ -44,5 +46,6 @@ namespace StudentsManagament.Core
                 item.Initialize(serviceCollection);
             }
         }
+        
     }
 }

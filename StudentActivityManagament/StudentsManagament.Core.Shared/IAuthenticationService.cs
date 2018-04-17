@@ -9,7 +9,12 @@ namespace StudentsManagament.Core.Shared
     {
         void RegisterAsync();
 
+        bool IsUserSignedIn();
+
+        string GetUserName();
+
         Task<bool> Login(string userName, string password, bool remeberUser);
         Task<bool> Register(string userName, string password);
+        Task<bool> Logout();
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using StudentsManagament.Core.Shared;
 using System;
+using System.Security.Principal;
 using System.Threading.Tasks;
 
 namespace StudentsManagement.Authentication
@@ -28,14 +29,19 @@ namespace StudentsManagement.Authentication
             this.logger = logger;
         }
 
-        public void Login()
+        public bool IsUserSignedIn()
         {
-            throw new NotImplementedException();
+            bool retVal = false;
+            if (signInManager.IsSignedIn(signInManager.Context.User))
+            {
+                retVal = true;
+            }
+            return retVal;            
         }
 
-        public void RegisterAsync()
+        public string GetUserName()
         {
-            throw new NotImplementedException();
+            return signInManager.UserManager.GetUserName(signInManager.Context.User);
         }
 
         public async Task<bool> Login(string userName, string password, bool remeberUser)
@@ -54,21 +60,22 @@ namespace StudentsManagement.Authentication
         public async Task<bool> Register(string userName, string password)
         {
             bool retVal = false;
-
             var user = new ApplicationUser { UserName = userName, Email = userName };
             var result = await userManager.CreateAsync(user, password);
 
             if (result.Succeeded)
             {
                 logger.LogInformation("User created a new account with password.");
-
-                var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                await signInManager.SignInAsync(user, isPersistent: false);
-                logger.LogInformation("User created a new account with password.");
                 retVal = true;
             }
+            return retVal;
+        }
 
+        public async Task<bool> Logout()
+        {
+            bool retVal = true;
+            await signInManager.SignOutAsync();
+            
             return retVal;
         }
     }

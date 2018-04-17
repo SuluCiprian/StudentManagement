@@ -8,7 +8,9 @@
     ".NETCoreApp,Version=v2.0": {
       "StudentsManagement.Persistence/1.0.0": {
         "dependencies": {
-          "StudentsManagament.Domain": "1.0.0"
+          "StudentsManagament.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.0.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0.0"
         },
         "runtime": {
           "StudentsManagement.Persistence.dll": {}
@@ -17,6 +19,16 @@
       "StudentsManagament.Domain/1.0.0": {
         "runtime": {
           "StudentsManagament.Domain.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.0.0.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.Http.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0.0": {
+        "runtime": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       }
     }
@@ -29,6 +41,16 @@
     },
     "StudentsManagament.Domain/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

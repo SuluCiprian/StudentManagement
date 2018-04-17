@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using StudentsManagament.Core.Shared;
+using StudentsManagement.Core.Shared;
 using System;
 using System.Security.Principal;
 using System.Threading.Tasks;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentActivityManagament.Models;
-using StudentsManagament.Core.Shared;
+using StudentsManagement.Core.Shared;
 
 namespace StudentActivityManagament.Controllers
 {

@@ -1,14 +1,14 @@
-﻿using StudentsManagament.Domain;
+﻿using StudentsManagement.Domain;
 using StudentsManagement.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsManagament.Persistence.EF
+namespace StudentsManagement.Persistence.EF
 {
     public class TeacherRepository : Repository<Teacher>, ITeacherRepository
     {
-        public TeacherRepository(StudentsManagamentContext context)
+        public TeacherRepository(StudentsManagementContext context)
             : base(context)
         {
 

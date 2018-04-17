@@ -1,15 +1,15 @@
-﻿using StudentsManagament.Domain;
+﻿using StudentsManagement.Domain;
 using StudentsManagement.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace StudentsManagament.Persistence.EF
+namespace StudentsManagement.Persistence.EF
 {
     public class ActivityRepository : Repository<Activity>, IActivityRepository
     {
-        public ActivityRepository(StudentsManagamentContext context)
+        public ActivityRepository(StudentsManagementContext context)
            : base(context)
         {
 
@@ -17,14 +17,14 @@ namespace StudentsManagament.Persistence.EF
 
         public IEnumerable<Activity> GetActivities()
         {
-            return StudentsManagamentContext.Activities.ToList();
+            return StudentsManagementContext.Activities.ToList();
         }
 
-        public StudentsManagamentContext StudentsManagamentContext
+        public StudentsManagementContext StudentsManagementContext
         {
             get
             {
-                return Context as StudentsManagamentContext;
+                return Context as StudentsManagementContext;
             }
         }
     }

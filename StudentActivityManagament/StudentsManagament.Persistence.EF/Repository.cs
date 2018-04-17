@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace StudentsManagament.Persistence.EF
+namespace StudentsManagement.Persistence.EF
 {
     public class Repository<T> : IRepository<T> where T : class
     {

@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StudentsManagament.Core.Shared\StudentsManagament.Core.Shared.csproj" />
-    <ProjectReference Include="..\StudentsManagament.Core\StudentsManagament.Core.csproj" />
-    <ProjectReference Include="..\StudentsManagament.Persistence.EF\StudentsManagament.Persistence.EF.csproj" />
+    <ProjectReference Include="..\StudentsManagament.Core.Shared\StudentsManagement.Core.Shared.csproj" />
+    <ProjectReference Include="..\StudentsManagament.Core\StudentsManagement.Core.csproj" />
+    <ProjectReference Include="..\StudentsManagament.Persistence.EF\StudentsManagement.Persistence.EF.csproj" />
     <ProjectReference Include="..\StudentsManagement.Authentication\StudentsManagement.Authentication.csproj" />
     <ProjectReference Include="..\StudentsManagement.Persistence\StudentsManagement.Persistence.csproj" />
   </ItemGroup>

@@ -22,12 +22,12 @@ namespace StudentActivityManagament.Controllers
         {
             ViewData["Message"] = "Your application activities page.";
 
-            _unitOfwork.Activities.Insert(new StudentsManagament.Domain.Activity
+            _unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
             {
                 Name = "curs"
             });
 
-            _unitOfwork.Activities.Insert(new StudentsManagament.Domain.Activity
+            _unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
             {
                 Name = "seminar"
             });

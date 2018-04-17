@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StudentActivityManagament.Models.ManageViewModels;
 using StudentActivityManagament.Services;
-using StudentsManagament.Core.Shared;
+using StudentsManagement.Core.Shared;
 using StudentsManagement.Authentication;
 
 namespace StudentActivityManagament.Controllers

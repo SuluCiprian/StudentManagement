@@ -11,11 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using StudentActivityManagament.Data;
 using StudentActivityManagament.Models;
 using StudentActivityManagament.Services;
-using StudentsManagament.Persistence.EF;
+using StudentsManagement.Persistence.EF;
 using StudentsManagement.Persistence;
-using StudentsManagament.Core.Shared;
+using StudentsManagement.Core.Shared;
 using StudentsManagement.Authentication;
-using StudentsManagament.Core;
+using StudentsManagement.Core;
 
 namespace StudentActivityManagament
 {
@@ -34,8 +34,8 @@ namespace StudentActivityManagament
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<StudentsManagamentContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("StudentsManagament")));
+            services.AddDbContext<StudentsManagementContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("StudentsManagement")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

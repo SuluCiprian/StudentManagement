@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentsManagament.Core.Shared
+namespace StudentsManagement.Core.Shared
 {
     public interface IAuthenticationService
     {

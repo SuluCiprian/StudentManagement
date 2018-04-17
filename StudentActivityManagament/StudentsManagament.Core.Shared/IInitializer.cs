@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsManagament.Core.Shared
+namespace StudentsManagement.Core.Shared
 {
     public interface IInitializer
     {

@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentsManagament.Domain;
+using StudentsManagement.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsManagament.Persistence.EF
+namespace StudentsManagement.Persistence.EF
 {
-    public class StudentsManagamentContext: DbContext
+    public class StudentsManagementContext: DbContext
     {
-        public StudentsManagamentContext(DbContextOptions<StudentsManagamentContext> options)
+        public StudentsManagementContext(DbContextOptions<StudentsManagementContext> options)
             :base(options)
         {
         }

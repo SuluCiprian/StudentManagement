@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsManagament.Persistence.EF
+namespace StudentsManagement.Persistence.EF
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly StudentsManagamentContext _context;
+        private readonly StudentsManagementContext _context;
 
-        public UnitOfWork(StudentsManagamentContext context)
+        public UnitOfWork(StudentsManagementContext context)
         {
             _context = context;
             Students = new StudentRepository(_context);

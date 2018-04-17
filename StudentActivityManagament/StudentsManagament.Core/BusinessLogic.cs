@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using StudentsManagament.Core.Shared;
+using StudentsManagement.Core.Shared;
 using StudentsManagement.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsManagament.Core
+namespace StudentsManagement.Core
 {
     public class BusinessLogic: IBusinessLogic
     {

@@ -1,4 +1,4 @@
-﻿using StudentsManagament.Domain;
+﻿using StudentsManagement.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;

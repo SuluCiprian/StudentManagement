@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 using StudentActivityManagament.Models;
 using StudentActivityManagament.Models.AccountViewModels;
 using StudentActivityManagament.Services;
-using StudentsManagament.Core.Shared;
+using StudentsManagement.Core.Shared;
 
 namespace StudentActivityManagament.Controllers
 {
@@ -21,12 +21,12 @@ namespace StudentActivityManagament.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
-        private readonly StudentsManagament.Core.Shared.IAuthenticationService authenticationService;
+        private readonly StudentsManagement.Core.Shared.IAuthenticationService authenticationService;
         private readonly ILogger logger;
         private readonly IBusinessLogic businessLogic;
 
         public AccountController(
-            StudentsManagament.Core.Shared.IAuthenticationService authService,
+            StudentsManagement.Core.Shared.IAuthenticationService authService,
             IBusinessLogic businessLogic,
             ILogger<AccountController> logger)
         {

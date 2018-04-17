@@ -7,8 +7,6 @@ namespace StudentsManagament.Core.Shared
 {
     public interface IAuthenticationService
     {
-        void RegisterAsync();
-
         bool IsUserSignedIn();
 
         string GetUserName();

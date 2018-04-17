@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace StudentActivityManagament.Migrations
+namespace StudentsManagement.Authentication.Migrations
 {
-    public partial class create_schema1 : Migration
+    public partial class create_schema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

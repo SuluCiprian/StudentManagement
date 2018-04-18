@@ -8,6 +8,7 @@ using StudentsManagement.Persistence;
 
 namespace StudentActivityMenagement.Controllers
 {
+    [Authorize]
     public class ActivitiesController : Controller
     {
         private readonly IUnitOfWork _unitOfwork;
@@ -17,7 +18,6 @@ namespace StudentActivityMenagement.Controllers
             _unitOfwork = unitOfWork;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             ViewData["Message"] = "Your application activities page.";

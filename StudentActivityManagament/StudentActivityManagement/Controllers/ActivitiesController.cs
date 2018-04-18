@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentActivityMenagement.Models.ActivityViewModel;
+using StudentsManagement.Domain;
 using StudentsManagement.Persistence;
 
 namespace StudentActivityMenagement.Controllers
@@ -101,9 +102,9 @@ namespace StudentActivityMenagement.Controllers
 
                 List<string> activitiesType = new List<string>
                 {
-                    "S",
-                    "L",
-                    "C"
+                    "Seminar",
+                    "Laborator",
+                    "Curs"
                 };
 
                 List<string> activityDescription = new List<string>
@@ -155,7 +156,7 @@ namespace StudentActivityMenagement.Controllers
                     6
                 };
 
-                var model = new StudentActivityInfo
+                var model = new Models.ActivityViewModel.StudentActivityInfo
                 {
                     IdActivity = idActivity,
                     Date = dateTime,
@@ -192,6 +193,127 @@ namespace StudentActivityMenagement.Controllers
 
                 return View("TeacherActivity", model);
             }
+        }
+
+        // GET: Students/Details/5
+        public IActionResult Details(int id)
+        {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+
+            var student = _unitOfwork.Students.GetById(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+        }
+
+        // GET: Students/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Students/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Id,FirstName,LastName")] Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfwork.Students.Insert(student);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(student);
+        }
+
+        // GET: Students/Edit/5
+        public IActionResult Edit(int id)
+        {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+            
+            var student = _unitOfwork.Students.GetById(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            return View(student);
+        }
+
+        // POST: Students/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName")] Student student)
+        {
+            if (id != student.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                //try
+                //{
+                //    _context.Update(student);
+                //    await _context.SaveChangesAsync();
+                //}
+                //catch (DbUpdateConcurrencyException)
+                //{
+                //    if (!StudentExists(student.Id))
+                //    {
+                //        return NotFound();
+                //    }
+                //    else
+                //    {
+                //        throw;
+                //    }
+                //}
+                return RedirectToAction(nameof(Index));
+            }
+            return View(student);
+        }
+
+        // GET: Students/Delete/5
+        public IActionResult Delete(int id)
+        {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+
+            var student = _unitOfwork.Students.GetById(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+        }
+
+        // POST: Students/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var student = _unitOfwork.Students.GetById(id);
+            _unitOfwork.Students.Delete(student);
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool StudentExists(int id)
+        {
+            return _unitOfwork.Students.GetById(id) != null ? true : false;
         }
     }
 }

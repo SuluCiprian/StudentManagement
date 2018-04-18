@@ -26,6 +26,17 @@
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label asp-for="IsStudent">
+                        <input asp-for="IsStudent" type="radio" value="true" id="myFirstId" /> Student
+                    </label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label asp-for="IsStudent">
+                        <input asp-for="IsStudent" type="radio" value="false" id="mySecondId" />Teacher
+                    </label>
+                </div>
+            </div>
             <button type="submit" class="btn btn-default">Register</button>
         </form>
     </div>

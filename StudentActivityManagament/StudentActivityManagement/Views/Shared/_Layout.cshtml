@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using StudentsManagement.Core.Shared
+@inject IAuthenticationService authService
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,15 +31,35 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">StudentActivityMenagement</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Activities" asp-action="Index">Activities</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
+            @if (authService.IsUserSignedIn())
+            {
+                @if (authService.IsUserStudent())
+                {
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li><a asp-area="" asp-controller="Activities" asp-action="Index">Activities</a></li>
+                        </ul>
+                        @await Html.PartialAsync("_LoginPartial")
+                    </div>
+                }
+                else
+                {
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li><a asp-area="" asp-controller="Activities" asp-action="Index">Activities</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Register">Manage users</a></li>
+                        </ul>
+                        @await Html.PartialAsync("_LoginPartial")
+                    </div>
+                }
+
+            }
         </div>
     </nav>
     <div class="container body-content">

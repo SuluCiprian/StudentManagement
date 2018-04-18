@@ -208,7 +208,7 @@ namespace StudentActivityMenagement.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                bool loginSuccessful = await authenticationService.Register(model.Email, model.Password);
+                bool loginSuccessful = await authenticationService.Register(model.Email, model.Password, model.IsStudent);
                 if (loginSuccessful)
                 {
                     retVal = RedirectToLocal(returnUrl);

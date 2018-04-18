@@ -59,7 +59,7 @@ namespace StudentsManagement.Authentication
             return retVal;
         }
 
-        public async Task<bool> Register(string userName, string password)
+        public async Task<bool> Register(string userName, string password, bool isStudent)
         {
             bool retVal = false;
             var user = new ApplicationUser { UserName = userName, Email = userName };
@@ -68,6 +68,14 @@ namespace StudentsManagement.Authentication
             if (result.Succeeded)
             {
                 logger.LogInformation("User created a new account with password.");
+                if (isStudent)
+                {
+                    await userManager.AddToRoleAsync(user, "Student");
+                }
+                else
+                {
+                    await userManager.AddToRoleAsync(user, "Teacher");
+                }
                 retVal = true;
             }
             return retVal;

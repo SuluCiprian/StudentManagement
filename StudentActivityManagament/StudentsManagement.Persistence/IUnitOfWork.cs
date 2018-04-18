@@ -9,6 +9,7 @@ namespace StudentsManagement.Persistence
         IStudentRepository Students { get; }
         ITeacherRepository Teachers { get; }
         IActivityRepository Activities { get; }
+        IStudentActivityInfoRepository StudentActivityInfo { get; }
         int Complete();
     }
 }

@@ -23,6 +23,8 @@ namespace StudentsManagement.Persistence.EF
 
         public IActivityRepository Activities { get; set; }
 
+        public IStudentActivityInfoRepository StudentActivityInfo { get; set; }
+
         public int Complete()
         {
             return _context.SaveChanges();

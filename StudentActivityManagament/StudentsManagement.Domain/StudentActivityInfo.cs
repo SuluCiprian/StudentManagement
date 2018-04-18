@@ -7,10 +7,9 @@ namespace StudentsManagement.Domain
     public class StudentActivityInfo
     {
         public int ActivityId { get; set; }
-        public int Mark { get; set; }
         public int StudentId { get; set; }
-        public int Grade { get; set; }
-        public int AttendanceNumber { get; set; }
-        public DateTime Date { get; set; }
+        public List<int> Grade { get; set; }
+        public List<int> AttendanceNumber { get; set; }
+        public List<DateTime> Date { get; set; }
     }
 }

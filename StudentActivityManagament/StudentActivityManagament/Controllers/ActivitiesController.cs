@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentsManagement.Persistence;
 
-namespace StudentActivityManagament.Controllers
+namespace StudentActivityMenagement.Controllers
 {
     public class ActivitiesController : Controller
     {

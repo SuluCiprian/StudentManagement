@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StudentsManagement.Authentication;
 
-namespace StudentActivityManagament.Data
+namespace StudentActivityMenagement.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

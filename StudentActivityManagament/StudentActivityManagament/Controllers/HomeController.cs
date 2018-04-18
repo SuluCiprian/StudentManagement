@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using StudentActivityManagament.Models;
+using StudentActivityMenagement.Models;
 using StudentsManagement.Core.Shared;
 
-namespace StudentActivityManagament.Controllers
+namespace StudentActivityMenagement.Controllers
 {
     
     public class HomeController : Controller

@@ -8,16 +8,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using StudentActivityManagament.Data;
-using StudentActivityManagament.Models;
-using StudentActivityManagament.Services;
+using StudentActivityMenagement.Data;
+using StudentActivityMenagement.Models;
+using StudentActivityMenagement.Services;
 using StudentsManagement.Persistence.EF;
 using StudentsManagement.Persistence;
 using StudentsManagement.Core.Shared;
 using StudentsManagement.Authentication;
 using StudentsManagement.Core;
 
-namespace StudentActivityManagament
+namespace StudentActivityMenagement
 {
     public class Startup
     {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using StudentActivityManagament.Data;
+using StudentActivityMenagement.Data;
 using System;
 
 namespace StudentsManagement.Authentication.Migrations

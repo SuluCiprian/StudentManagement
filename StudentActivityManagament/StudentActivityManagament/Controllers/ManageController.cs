@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using StudentActivityManagament.Models.ManageViewModels;
-using StudentActivityManagament.Services;
+using StudentActivityMenagement.Models.ManageViewModels;
+using StudentActivityMenagement.Services;
 using StudentsManagement.Core.Shared;
 using StudentsManagement.Authentication;
 
-namespace StudentActivityManagament.Controllers
+namespace StudentActivityMenagement.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
@@ -494,7 +494,7 @@ namespace StudentActivityManagament.Controllers
         {
             return string.Format(
                 AuthenicatorUriFormat,
-                _urlEncoder.Encode("StudentActivityManagament"),
+                _urlEncoder.Encode("StudentActivityMenagement"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

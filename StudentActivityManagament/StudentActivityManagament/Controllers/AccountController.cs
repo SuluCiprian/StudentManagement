@@ -10,12 +10,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using StudentActivityManagament.Models;
-using StudentActivityManagament.Models.AccountViewModels;
-using StudentActivityManagament.Services;
+using StudentActivityMenagement.Models;
+using StudentActivityMenagement.Models.AccountViewModels;
+using StudentActivityMenagement.Services;
 using StudentsManagement.Core.Shared;
 
-namespace StudentActivityManagament.Controllers
+namespace StudentActivityMenagement.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using StudentActivityManagament.Services;
+using StudentActivityMenagement.Services;
 using StudentsManagement.Core.Shared;
 
-namespace StudentActivityManagament.Services
+namespace StudentActivityMenagement.Services
 {
     public static class EmailSenderExtensions
     {

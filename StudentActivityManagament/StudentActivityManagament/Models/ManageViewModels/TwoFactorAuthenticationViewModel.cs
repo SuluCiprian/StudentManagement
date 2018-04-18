@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StudentActivityManagament.Models.ManageViewModels
+namespace StudentActivityMenagement.Models.ManageViewModels
 {
     public class TwoFactorAuthenticationViewModel
     {

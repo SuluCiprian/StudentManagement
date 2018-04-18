@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using StudentsManagement.Authentication;
+using StudentsManagement.Core.Shared;
 
 namespace StudentActivityMenagement
 {
@@ -14,7 +17,16 @@ namespace StudentActivityMenagement
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+
+            var scope = host.Services.CreateScope();
+            var serviceProvider = scope.ServiceProvider;
+
+            var authInitService = serviceProvider.GetRequiredService<IAuthenticationInitializeService>();
+
+            authInitService.Initialize();
+
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

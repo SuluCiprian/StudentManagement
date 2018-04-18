@@ -8,7 +8,7 @@ namespace StudentsManagement.Core.Shared
     public interface IAuthenticationService
     {
         bool IsUserSignedIn();
-
+        bool IsUserStudent();
         string GetUserName();
 
         Task<bool> Login(string userName, string password, bool remeberUser);

@@ -20,6 +20,7 @@ namespace StudentActivityMenagement.Controllers
             _unitOfwork = unitOfWork;
         }
 
+
         public IActionResult Index()
         {
             ViewData["Message"] = "Your application activities page.";

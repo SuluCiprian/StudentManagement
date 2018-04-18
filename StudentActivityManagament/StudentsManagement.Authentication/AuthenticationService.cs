@@ -35,7 +35,7 @@ namespace StudentsManagement.Authentication
         {
             bool retVal = false;
             if (signInManager.IsSignedIn(signInManager.Context.User))
-            {
+            {                
                 retVal = true;
             }
             return retVal;
@@ -81,5 +81,11 @@ namespace StudentsManagement.Authentication
             return retVal;
         }
 
+        public bool IsUserStudent()
+        {
+            bool isStudent = signInManager.Context.User.IsInRole("Student");
+
+            return isStudent;
+        }
     }
 }

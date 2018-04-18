@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentActivityMenagement", "StudentActivityManagament\StudentActivityMenagement.csproj", "{BD3EDA09-8442-4A5A-AC3D-1C7E0EE4A36B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentActivityMenagement", "StudentActivityManagement\StudentActivityMenagement.csproj", "{BD3EDA09-8442-4A5A-AC3D-1C7E0EE4A36B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Core", "StudentsManagament.Core\StudentsManagement.Core.csproj", "{2EEC0A6F-42E2-409C-8985-638CC9BD6F81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Core", "StudentsManagement.Core\StudentsManagement.Core.csproj", "{2EEC0A6F-42E2-409C-8985-638CC9BD6F81}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Core.Shared", "StudentsManagament.Core.Shared\StudentsManagement.Core.Shared.csproj", "{A40BDA11-03DC-49BB-9082-AD88660E04F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Core.Shared", "StudentsManagement.Core.Shared\StudentsManagement.Core.Shared.csproj", "{A40BDA11-03DC-49BB-9082-AD88660E04F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Persistence", "StudentsManagement.Persistence\StudentsManagement.Persistence.csproj", "{FDC37C6D-2FEB-4716-8CC2-9986BEE53E49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Persistence.EF", "StudentsManagament.Persistence.EF\StudentsManagement.Persistence.EF.csproj", "{A8D64216-D179-4A90-85B6-AB2E40B51EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Persistence.EF", "StudentsManagement.Persistence.EF\StudentsManagement.Persistence.EF.csproj", "{A8D64216-D179-4A90-85B6-AB2E40B51EF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Domain", "StudentsManagament.Domain\StudentsManagement.Domain.csproj", "{8FA8C1ED-AE29-4928-A355-C76617EE12C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsManagement.Domain", "StudentsManagement.Domain\StudentsManagement.Domain.csproj", "{8FA8C1ED-AE29-4928-A355-C76617EE12C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{834980B8-AF69-4F7D-869B-9F1FE0E740C7}"
 EndProject

@@ -11,7 +11,7 @@ using System;
 namespace StudentsManagement.Persistence.EF.Migrations
 {
     [DbContext(typeof(StudentsManagementContext))]
-    [Migration("20180417110957_create_schema")]
+    [Migration("20180418083644_create_schema")]
     partial class create_schema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

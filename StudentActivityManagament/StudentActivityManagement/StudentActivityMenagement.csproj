@@ -2,8 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <UserSecretsId>aspnet-StudentActivityManagament-DE0B1285-A0C4-4F6F-A641-1C40AADDDFEF</UserSecretsId>
+    <UserSecretsId>aspnet-StudentActivityManagement-DE0B1285-A0C4-4F6F-A641-1C40AADDDFEF</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Compile Remove="Migrations\**" />
+    <Compile Remove="Services\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Migrations\**" />
+    <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Data\**" />
+    <None Remove="Migrations\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
 
 
   <ItemGroup>
@@ -19,17 +34,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StudentsManagament.Core.Shared\StudentsManagement.Core.Shared.csproj" />
-    <ProjectReference Include="..\StudentsManagament.Core\StudentsManagement.Core.csproj" />
-    <ProjectReference Include="..\StudentsManagament.Persistence.EF\StudentsManagement.Persistence.EF.csproj" />
+    <ProjectReference Include="..\StudentsManagement.Core.Shared\StudentsManagement.Core.Shared.csproj" />
     <ProjectReference Include="..\StudentsManagement.Authentication\StudentsManagement.Authentication.csproj" />
+    <ProjectReference Include="..\StudentsManagement.Core\StudentsManagement.Core.csproj" />
+    <ProjectReference Include="..\StudentsManagement.Persistence.EF\StudentsManagement.Persistence.EF.csproj" />
     <ProjectReference Include="..\StudentsManagement.Persistence\StudentsManagement.Persistence.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

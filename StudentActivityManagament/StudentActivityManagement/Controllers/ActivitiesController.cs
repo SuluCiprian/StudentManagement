@@ -204,7 +204,7 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-            var activity = _unitOfwork.Activities.GetById(id);
+            var activity = _unitOfwork.StudentActivityInfo.GetById(id);
             if (activity == null)
             {
                 return NotFound();
@@ -243,12 +243,14 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-            var activity = _unitOfwork.Activities.GetById(id);
-            if (activity == null)
-            {
-                return NotFound();
-            }
-            return View(activity);
+            return View();
+
+            //var activity = _unitOfwork.StudentActivityInfo.GetById(id);
+            //if (activity == null)
+            //{
+            //    return NotFound();
+            //}
+            //return View(activity);
         }
 
         // POST: Students/Edit/5
@@ -256,34 +258,22 @@ namespace StudentActivityMenagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName")] Student student)
+        public IActionResult Edit(int id, StudentsManagement.Domain.StudentActivityInfo activity)
         {
-            if (id != student.Id)
+            if (id != activity.ActivityId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                //try
-                //{
-                //    _context.Update(student);
-                //    await _context.SaveChangesAsync();
-                //}
-                //catch (DbUpdateConcurrencyException)
-                //{
-                //    if (!StudentExists(student.Id))
-                //    {
-                //        return NotFound();
-                //    }
-                //    else
-                //    {
-                //        throw;
-                //    }
-                //}
+                _unitOfwork.StudentActivityInfo.Insert(activity);
+                _unitOfwork.Complete();
+
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(activity);
         }
 
         // GET: Students/Delete/5

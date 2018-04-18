@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using StudentsManagement.Core.Shared;
 using System;
+using System.Collections.Generic;
 using System.Security.Principal;
 using System.Threading.Tasks;
 
 namespace StudentsManagement.Authentication
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : Core.Shared.IAuthenticationService
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
@@ -36,7 +38,7 @@ namespace StudentsManagement.Authentication
             {
                 retVal = true;
             }
-            return retVal;            
+            return retVal;
         }
 
         public string GetUserName()
@@ -47,7 +49,7 @@ namespace StudentsManagement.Authentication
         public async Task<bool> Login(string userName, string password, bool remeberUser)
         {
             bool retVal = false;
-            var result = await signInManager.PasswordSignInAsync(userName,password,remeberUser, lockoutOnFailure: false);
+            var result = await signInManager.PasswordSignInAsync(userName, password, remeberUser, lockoutOnFailure: false);
             if (result.Succeeded)
             {
                 logger.LogInformation("User logged in.");
@@ -75,8 +77,9 @@ namespace StudentsManagement.Authentication
         {
             bool retVal = true;
             await signInManager.SignOutAsync();
-            
+
             return retVal;
         }
+
     }
 }

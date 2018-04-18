@@ -21,13 +21,18 @@
                 <tbody>
                     @for (int iterator = 0; iterator < Model.IdActivities.Count; ++iterator)
                     {
-                        <tr>
-                            <td scope="row">
-                                <a asp-action="Activity" asp-route-id="@Model.IdActivities[iterator]">@Model.ActivitiesName[iterator]</a>
-                            </td>
-                            <th scope="row">@Model.ActivitiesType[iterator]</th>
-                            <th scope="row">@Model.ActivitiesDescription[iterator]</th>
-                        </tr>
+                    <tr>
+                        <td scope="row">
+                            <a asp-action="Activity" asp-route-id="@Model.IdActivities[iterator]">@Model.ActivitiesName[iterator]</a>
+                        </td>
+                        <th scope="row">@Model.ActivitiesType[iterator]</th>
+                        <th scope="row">@Model.ActivitiesDescription[iterator]</th>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@Model.IdActivities[iterator]">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@Model.IdActivities[iterator]">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@Model.IdActivities[iterator]">Delete</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

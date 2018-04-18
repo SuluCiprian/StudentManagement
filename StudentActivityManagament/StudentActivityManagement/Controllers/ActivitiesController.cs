@@ -26,17 +26,17 @@ namespace StudentActivityMenagement.Controllers
         {
             ViewData["Message"] = "Your application activities page.";
 
-            _unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
-            {
-                Name = "curs"
-            });
+            //_unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
+            //{
+            //    Name = "curs"
+            //});
 
-            _unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
-            {
-                Name = "seminar"
-            });
+            //_unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
+            //{
+            //    Name = "seminar"
+            //});
 
-            _unitOfwork.Complete();
+            //_unitOfwork.Complete();
 
             var activities = _unitOfwork.Activities.GetAll();
 
@@ -204,13 +204,13 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-            var student = _unitOfwork.Students.GetById(id);
-            if (student == null)
+            var activity = _unitOfwork.Activities.GetById(id);
+            if (activity == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(activity);
         }
 
         // GET: Students/Create
@@ -224,14 +224,15 @@ namespace StudentActivityMenagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,FirstName,LastName")] Student student)
+        public IActionResult Create(Activity activity)
         {
             if (ModelState.IsValid)
             {
-                _unitOfwork.Students.Insert(student);
+                _unitOfwork.Activities.Insert(activity);
+                _unitOfwork.Complete();
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(activity);
         }
 
         // GET: Students/Edit/5
@@ -241,13 +242,13 @@ namespace StudentActivityMenagement.Controllers
             //{
             //    return NotFound();
             //}
-            
-            var student = _unitOfwork.Students.GetById(id);
-            if (student == null)
+
+            var activity = _unitOfwork.Activities.GetById(id);
+            if (activity == null)
             {
                 return NotFound();
             }
-            return View(student);
+            return View(activity);
         }
 
         // POST: Students/Edit/5
@@ -293,13 +294,13 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-            var student = _unitOfwork.Students.GetById(id);
-            if (student == null)
+            var activity = _unitOfwork.Activities.GetById(id);
+            if (activity == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(activity);
         }
 
         // POST: Students/Delete/5
@@ -307,8 +308,9 @@ namespace StudentActivityMenagement.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var student = _unitOfwork.Students.GetById(id);
-            _unitOfwork.Students.Delete(student);
+            var activity = _unitOfwork.Activities.GetById(id);
+            _unitOfwork.Activities.Delete(activity);
+            _unitOfwork.Complete();
             return RedirectToAction(nameof(Index));
         }
 

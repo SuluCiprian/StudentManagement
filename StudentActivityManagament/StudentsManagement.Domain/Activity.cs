@@ -8,7 +8,7 @@ namespace StudentsManagement.Domain
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ActivityType Type { get; set; }
+        public string Type { get; set; }
         public string Description { get; set; }
         public Teacher Owner { get; set; }
         //public IEnumerable<Student> Students { get; set; }

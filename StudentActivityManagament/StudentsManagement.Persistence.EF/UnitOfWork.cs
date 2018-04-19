@@ -15,6 +15,7 @@ namespace StudentsManagement.Persistence.EF
             Students = new StudentRepository(_context);
             Teachers = new TeacherRepository(_context);
             Activities = new ActivityRepository(_context);
+            StudentActivityInfo = new StudentActivityInfoRepository(_context);
         }
 
         public IStudentRepository Students { get; set; }

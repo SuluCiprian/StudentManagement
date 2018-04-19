@@ -228,7 +228,9 @@ namespace StudentActivityMenagement.Controllers
         {
             if (ModelState.IsValid)
             {
+                var activityInfo = new StudentsManagement.Domain.StudentActivityInfo { ActivityId =activity.Id, StudentId = 1 };
                 _unitOfwork.Activities.Insert(activity);
+                _unitOfwork.StudentActivityInfo.Insert(activityInfo);
                 _unitOfwork.Complete();
                 return RedirectToAction(nameof(Index));
             }
@@ -260,10 +262,12 @@ namespace StudentActivityMenagement.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, StudentsManagement.Domain.StudentActivityInfo activity)
         {
-            if (id != activity.ActivityId)
-            {
-                return NotFound();
-            }
+            //if (id != activity.ActivityId)
+            //{
+            //    return NotFound();
+            //}
+
+            activity.ActivityId = id;
 
             if (ModelState.IsValid)
             {

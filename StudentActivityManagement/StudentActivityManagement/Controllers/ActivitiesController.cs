@@ -228,9 +228,7 @@ namespace StudentActivityMenagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                var activityInfo = new StudentsManagement.Domain.StudentActivityInfo { ActivityId =activity.Id, StudentId = 1 };
                 _unitOfwork.Activities.Insert(activity);
-                _unitOfwork.StudentActivityInfo.Insert(activityInfo);
                 _unitOfwork.Complete();
                 return RedirectToAction(nameof(Index));
             }

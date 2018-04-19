@@ -65,9 +65,31 @@ namespace StudentsManagement.Persistence.EF.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("UserName");
+
                     b.HasKey("Id");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("StudentsManagement.Domain.StudentActivityInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ActivityId");
+
+                    b.Property<int>("Attendance");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("Grade");
+
+                    b.Property<int>("StudentId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudentActivityInfo");
                 });
 
             modelBuilder.Entity("StudentsManagement.Domain.Teacher", b =>
@@ -76,6 +98,8 @@ namespace StudentsManagement.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 

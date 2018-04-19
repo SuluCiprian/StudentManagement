@@ -19,7 +19,6 @@ D:\GitHub\StudentManagement\StudentActivityManagament\StudentsManagement.Domain\
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Domain\bin\Debug\netcoreapp2.0\StudentsManagement.Domain.deps.json
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Domain\bin\Debug\netcoreapp2.0\StudentsManagement.Domain.dll
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Domain\bin\Debug\netcoreapp2.0\StudentsManagement.Domain.pdb
-D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Domain\obj\Debug\netcoreapp2.0\StudentsManagement.Domain.csprojResolveAssemblyReference.cache
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Domain\obj\Debug\netcoreapp2.0\StudentsManagement.Domain.csproj.CoreCompileInputs.cache
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Domain\obj\Debug\netcoreapp2.0\StudentsManagement.Domain.AssemblyInfoInputs.cache
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Domain\obj\Debug\netcoreapp2.0\StudentsManagement.Domain.AssemblyInfo.cs

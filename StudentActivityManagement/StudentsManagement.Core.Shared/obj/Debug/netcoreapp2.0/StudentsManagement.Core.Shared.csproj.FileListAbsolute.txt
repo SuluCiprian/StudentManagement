@@ -32,7 +32,6 @@ D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Sh
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Shared\bin\Debug\netcoreapp2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Shared\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Http.Abstractions.xml
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Shared\bin\Debug\netcoreapp2.0\Microsoft.Extensions.DependencyInjection.Abstractions.xml
-D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Shared\obj\Debug\netcoreapp2.0\StudentsManagement.Core.Shared.csprojResolveAssemblyReference.cache
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Shared\obj\Debug\netcoreapp2.0\StudentsManagement.Core.Shared.csproj.CoreCompileInputs.cache
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Shared\obj\Debug\netcoreapp2.0\StudentsManagement.Core.Shared.AssemblyInfoInputs.cache
 D:\GitHub\StudentManagement\StudentActivityManagement\StudentsManagement.Core.Shared\obj\Debug\netcoreapp2.0\StudentsManagement.Core.Shared.AssemblyInfo.cs

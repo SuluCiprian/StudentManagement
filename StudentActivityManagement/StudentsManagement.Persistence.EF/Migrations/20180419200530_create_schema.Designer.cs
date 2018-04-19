@@ -11,7 +11,7 @@ using System;
 namespace StudentsManagement.Persistence.EF.Migrations
 {
     [DbContext(typeof(StudentsManagementContext))]
-    [Migration("20180418083644_create_schema")]
+    [Migration("20180419200530_create_schema")]
     partial class create_schema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,9 +66,31 @@ namespace StudentsManagement.Persistence.EF.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("UserName");
+
                     b.HasKey("Id");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("StudentsManagement.Domain.StudentActivityInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ActivityId");
+
+                    b.Property<int>("Attendance");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("Grade");
+
+                    b.Property<int>("StudentId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StudentActivityInfo");
                 });
 
             modelBuilder.Entity("StudentsManagement.Domain.Teacher", b =>
@@ -77,6 +99,8 @@ namespace StudentsManagement.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 

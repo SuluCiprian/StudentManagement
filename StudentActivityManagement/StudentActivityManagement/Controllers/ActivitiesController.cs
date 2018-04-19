@@ -204,7 +204,7 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-            var activity = _unitOfwork.StudentActivityInfo.GetById(id);
+            var activity = _unitOfwork.StudentActivityInfo.SearchFor(a => a.ActivityId == id).ToList();
             if (activity == null)
             {
                 return NotFound();
@@ -258,14 +258,14 @@ namespace StudentActivityMenagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, StudentsManagement.Domain.StudentActivityInfo activity)
+        public IActionResult Edit(int id, [Bind("ActivityId,StudentId,Grade,Attendance,Date")] StudentsManagement.Domain.StudentActivityInfo activity)
         {
             //if (id != activity.ActivityId)
             //{
             //    return NotFound();
             //}
 
-            activity.ActivityId = id;
+             activity.ActivityId = id;
 
             if (ModelState.IsValid)
             {

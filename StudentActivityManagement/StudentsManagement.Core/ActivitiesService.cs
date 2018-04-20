@@ -44,6 +44,7 @@ namespace StudentsManagement.Core
         public IEnumerable<Activity> Index()
         {
             var activities = _unitOfWork.Activities.GetAll();
+            //var activities = _unitOfWork.Students.GetActivitiesByStudentId(0);
             return activities;
         }
 

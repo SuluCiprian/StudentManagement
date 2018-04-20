@@ -14,13 +14,10 @@ namespace StudentActivityMenagement.Controllers
     [Authorize]
     public class ActivitiesController : Controller
     {
-        private readonly IUnitOfWork _unitOfwork;
         private readonly IActivitiesService _activitiesService;
-        private string user = null;
 
-        public ActivitiesController(IUnitOfWork unitOfWork, IActivitiesService activitiesService)
+        public ActivitiesController(IActivitiesService activitiesService)
         {
-            _unitOfwork = unitOfWork;
             _activitiesService = activitiesService;
         }
 
@@ -35,7 +32,7 @@ namespace StudentActivityMenagement.Controllers
         }
         
 
-        // GET: Students/Details/5
+        // GET: Activity/Details/5
         public IActionResult Details(int id)
         {
             //if (id == null)
@@ -52,15 +49,13 @@ namespace StudentActivityMenagement.Controllers
             return View(activity);
         }
 
-        // GET: Students/Create
+        // GET: Activity/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Students/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Activity activity)
@@ -73,27 +68,13 @@ namespace StudentActivityMenagement.Controllers
             return View(activity);
         }
 
-        // GET: Students/Edit/5
+        // GET: Activities/Edit/5
         public IActionResult Edit(int id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
             return View();
-
-            //var activity = _unitOfwork.StudentActivityInfo.GetById(id);
-            //if (activity == null)
-            //{
-            //    return NotFound();
-            //}
-            //return View(activity);
         }
 
-        // POST: Students/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Activities/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("ActivityId,StudentId,Grade,Attendance,Date")] StudentsManagement.Domain.StudentActivityInfo activity)
@@ -130,7 +111,7 @@ namespace StudentActivityMenagement.Controllers
             return View(activity);
         }
 
-        // POST: Students/Delete/5
+        // POST: Activities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)

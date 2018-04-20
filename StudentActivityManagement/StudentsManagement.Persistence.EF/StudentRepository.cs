@@ -20,6 +20,11 @@ namespace StudentsManagement.Persistence.EF
             return null;
         }
 
+        public IEnumerable<Activity> GetActivitiesByStudentId(int studId)
+        {
+            return StudentsManagementContext.Students.FirstOrDefault(a => a.Id == studId).Activities;
+        }
+
         public StudentsManagementContext StudentsManagementContext
         {
             get

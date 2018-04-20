@@ -48,6 +48,7 @@ namespace StudentActivityMenagement
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IAuthenticationInitializeService, AuthenticationInitializeService>();
             services.AddTransient<IBusinessLogic, BusinessLogic>();
+            services.AddTransient<IActivitiesService, ActivitiesService>();
             services.AddMvc();
         }
 

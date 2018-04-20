@@ -12,13 +12,11 @@ namespace StudentsManagement.Core
     {
         IAuthenticationService service;
         List<IInitializer> initList;
-        AccountLogic account;
         private IUnitOfWork unitOfWork;
 
         public BusinessLogic(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            account = new AccountLogic();
             //service.Add(account);
         }
 

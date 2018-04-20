@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentActivityMenagement.Models.ActivityViewModel;
+using StudentsManagement.Core.Shared;
 using StudentsManagement.Domain;
 using StudentsManagement.Persistence;
 
@@ -14,11 +15,13 @@ namespace StudentActivityMenagement.Controllers
     public class ActivitiesController : Controller
     {
         private readonly IUnitOfWork _unitOfwork;
+        private readonly IActivitiesService _activitiesService;
         private string user = null;
 
-        public ActivitiesController(IUnitOfWork unitOfWork)
+        public ActivitiesController(IUnitOfWork unitOfWork, IActivitiesService activitiesService)
         {
             _unitOfwork = unitOfWork;
+            _activitiesService = activitiesService;
         }
 
 
@@ -26,175 +29,11 @@ namespace StudentActivityMenagement.Controllers
         {
             ViewData["Message"] = "Your application activities page.";
 
-            //_unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
-            //{
-            //    Name = "curs"
-            //});
-
-            //_unitOfwork.Activities.Insert(new StudentsManagement.Domain.Activity
-            //{
-            //    Name = "seminar"
-            //});
-
-            //_unitOfwork.Complete();
-
-            var activities = _unitOfwork.Activities.GetAll();
+            var activities = _activitiesService.Index();
 
             return View(activities);
         }
-
-        public IActionResult ViewAll(string user)
-        {
-            if (user == "student")
-            {
-                List<string> activitiesName = new List<string>
-                {
-                    "Activity 1",
-                    "Activity 2",
-                    "Activity 3"
-                };
-
-                List<int> activitiesId = new List<int>
-                {
-                    1,
-                    2,
-                    3
-                };
-
-                List<string> activitiesType = new List<string>
-                {
-                    "Curs",
-                    "Seminar",
-                    "Llaborator"
-                };
-
-                List<string> activityDescription = new List<string>
-                {
-                    "Class 101",
-                    "Class 102",
-                    "Class 103"
-                };
-
-                var model = new Activities
-                {
-                    ActivitiesName = activitiesName,
-                    IdActivities = activitiesId,
-                    ActivitiesType = activitiesType,
-                    ActivitiesDescription = activityDescription
-                };
-
-                return View("StudentActivities", model);
-            }
-            else
-            {
-                List<string> activitiesName = new List<string>
-                {
-                    "Activity 4",
-                    "Activity 5",
-                    "Activity 6"
-                };
-
-                List<int> activitiesId = new List<int>
-                {
-                    4,
-                    5,
-                    6
-                };
-
-                List<string> activitiesType = new List<string>
-                {
-                    "Seminar",
-                    "Laborator",
-                    "Curs"
-                };
-
-                List<string> activityDescription = new List<string>
-                {
-                    "Class 104",
-                    "Class 105",
-                    "Class 106"
-                };
-
-                var model = new Activities
-                {
-                    ActivitiesName = activitiesName,
-                    IdActivities = activitiesId,
-                    ActivitiesType = activitiesType,
-                    ActivitiesDescription = activityDescription
-                };
-
-                return View("TeacherActivities", model);
-            }
-        }
-
-        public IActionResult Activity(int? id)
-        {
-            int idActivity = id ?? default(int);
-
-            if (user == "student")
-            {
-                List<DateTime> dateTime = new List<DateTime>
-                {
-                    new DateTime(2018, 5, 4),
-                    new DateTime(2018, 5, 5),
-                    new DateTime(2018, 5, 6),
-                    new DateTime(2018, 5, 7)
-                };
-
-                List<double> grade = new List<double>
-                {
-                    9,
-                    7.6,
-                    5,
-                    8
-                };
-
-                List<int> attendance = new List<int>
-                {
-                    5,
-                    2,
-                    0,
-                    6
-                };
-
-                var model = new Models.ActivityViewModel.StudentActivityInfo
-                {
-                    IdActivity = idActivity,
-                    Date = dateTime,
-                    Grade = grade,
-                    Attendance = attendance
-                };
-
-                return View("StudentActivity", model);
-            }
-            else
-            {
-                List<int> studentId = new List<int>
-                {
-                    1,
-                    2,
-                    3
-                };
-
-                List<string> name = new List<string>
-                {
-                    "Ionel",
-                    "Georgel",
-                    "Mihai"
-                };
-
-                string activityName = "E-learning";
-
-                var model = new AllStudentsOnActivity
-                {
-                    Id = studentId,
-                    Name = name,
-                    ActivityName = activityName
-                };
-
-                return View("TeacherActivity", model);
-            }
-        }
+        
 
         // GET: Students/Details/5
         public IActionResult Details(int id)
@@ -204,7 +43,7 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-            var activity = _unitOfwork.StudentActivityInfo.SearchFor(a => a.ActivityId == id).ToList();
+            var activity = _activitiesService.Details(id);
             if (activity == null)
             {
                 return NotFound();
@@ -228,8 +67,7 @@ namespace StudentActivityMenagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfwork.Activities.Insert(activity);
-                _unitOfwork.Complete();
+                _activitiesService.Create(activity);
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);
@@ -269,10 +107,7 @@ namespace StudentActivityMenagement.Controllers
 
             if (ModelState.IsValid)
             {
-                _unitOfwork.StudentActivityInfo.Insert(activity);
-                _unitOfwork.Complete();
-
-
+                _activitiesService.Edit(id, activity);
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);
@@ -286,7 +121,7 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-            var activity = _unitOfwork.Activities.GetById(id);
+            var activity = _activitiesService.GetDelete(id);
             if (activity == null)
             {
                 return NotFound();
@@ -300,15 +135,13 @@ namespace StudentActivityMenagement.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var activity = _unitOfwork.Activities.GetById(id);
-            _unitOfwork.Activities.Delete(activity);
-            _unitOfwork.Complete();
+            _activitiesService.PostDelete(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool StudentExists(int id)
         {
-            return _unitOfwork.Students.GetById(id) != null ? true : false;
+            return _activitiesService.StudentExists(id);
         }
     }
 }

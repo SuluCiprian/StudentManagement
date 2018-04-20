@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using StudentActivityMenagement.Models.ActivityViewModel;
 using StudentsManagement.Core.Shared;
 using StudentsManagement.Domain;
@@ -52,17 +53,23 @@ namespace StudentActivityMenagement.Controllers
         // GET: Activity/Create
         public IActionResult Create()
         {
-            return View();
+            ActivityViewModel vm = new ActivityViewModel();
+            vm.ActivityTypes = _activitiesService.GetAvailableActivityTypes();
+            
+            return View(vm);
         }
 
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Activity activity)
+        public IActionResult Create(ActivityViewModel activity)
         {
             if (ModelState.IsValid)
             {
-                _activitiesService.Create(activity);
+                activity.ActivityTypes = _activitiesService.GetAvailableActivityTypes(); 
+                Activity act = new Activity { Name = activity.Name, Description = activity.Description, Type = activity.SelectedType };
+
+                _activitiesService.Create(act);
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);

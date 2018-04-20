@@ -11,5 +11,6 @@ namespace StudentsManagement.Persistence
         IActivityRepository Activities { get; }
         IStudentActivityInfoRepository StudentActivityInfo { get; }
         int Complete();
+        void Initialize();
     }
 }

@@ -11,6 +11,7 @@ namespace StudentsManagement.Domain
         public ActivityType Type { get; set; }
         public string Description { get; set; }
         public Teacher Owner { get; set; }
-        //public IEnumerable<Student> Students { get; set; }
+        public virtual ICollection<ScheduleEntry> Schedule { get; set; }
+        public virtual ICollection<ActivityStudent> StudentsLink { get; set; }
     }
 }

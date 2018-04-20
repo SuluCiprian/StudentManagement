@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace StudentsManagement.Persistence.EF
 {
@@ -20,12 +21,23 @@ namespace StudentsManagement.Persistence.EF
             return StudentsManagementContext.Activities.ToList();
         }
 
+        public IEnumerable<ActivityType> GetAvailableActivityTypes()
+        {
+            return StudentsManagementContext.ActivityTypes.AsEnumerable();
+        }
+
         public StudentsManagementContext StudentsManagementContext
         {
             get
             {
                 return Context as StudentsManagementContext;
             }
+        }
+
+        public override IEnumerable<Activity> GetAll()
+        {
+            return StudentsManagementContext.Activities
+                .Include(a => a.Type).AsEnumerable();
         }
     }
 }

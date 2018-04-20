@@ -33,6 +33,9 @@
         }
       },
       "StudentsManagement.Core.Shared/1.0.0": {
+        "dependencies": {
+          "StudentsManagement.Domain": "1.0.0"
+        },
         "runtime": {
           "StudentsManagement.Core.Shared.dll": {}
         }

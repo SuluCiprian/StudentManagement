@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace StudentsManagement.Persistence.EF
 {
     public class UnitOfWork : IUnitOfWork
@@ -34,6 +34,18 @@ namespace StudentsManagement.Persistence.EF
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        public void Initialize()
+        {
+            if (!_context.ActivityTypes.Any(at => at.Name.Equals("Course")))
+                _context.ActivityTypes.Add(new Domain.ActivityType { Name = "Course" });
+
+            if (!_context.ActivityTypes.Any(at => at.Name.Equals("Laboratory")))
+                _context.ActivityTypes.Add(new Domain.ActivityType { Name = "Laboratory" });
+
+            _context.SaveChanges();
+
         }
     }
 }

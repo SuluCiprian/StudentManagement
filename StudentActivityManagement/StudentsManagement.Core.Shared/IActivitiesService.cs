@@ -14,5 +14,6 @@ namespace StudentsManagement.Core.Shared
         Activity GetDelete(int id);
         void PostDelete(int id);
         bool StudentExists(int id);
+        IEnumerable<ActivityType> GetAvailableActivityTypes();
     }
 }

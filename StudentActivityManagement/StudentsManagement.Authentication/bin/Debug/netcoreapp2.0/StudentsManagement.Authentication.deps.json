@@ -678,8 +678,16 @@
         }
       },
       "StudentsManagement.Core.Shared/1.0.0": {
+        "dependencies": {
+          "StudentsManagement.Domain": "1.0.0"
+        },
         "runtime": {
           "StudentsManagement.Core.Shared.dll": {}
+        }
+      },
+      "StudentsManagement.Domain/1.0.0": {
+        "runtime": {
+          "StudentsManagement.Domain.dll": {}
         }
       }
     }
@@ -1244,6 +1252,11 @@
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
     },
     "StudentsManagement.Core.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentsManagement.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

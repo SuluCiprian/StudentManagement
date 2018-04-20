@@ -22,7 +22,7 @@ namespace StudentsManagement.Persistence.EF
             Context.Set<T>().Remove(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return Context.Set<T>().ToList();
         }

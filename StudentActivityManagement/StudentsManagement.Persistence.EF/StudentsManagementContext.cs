@@ -16,8 +16,10 @@ namespace StudentsManagement.Persistence.EF
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Activity> Activities { get; set; }
+        public virtual DbSet<ActivityType> ActivityTypes { get; set; }
         public virtual DbSet<StudentActivityInfo> StudentActivityInfo { get; set; }
-
+        public virtual DbSet<ActivityStudent> ActivityStudents { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

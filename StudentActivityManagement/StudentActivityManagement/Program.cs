@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StudentsManagement.Authentication;
 using StudentsManagement.Core.Shared;
+using StudentsManagement.Persistence;
 
 namespace StudentActivityMenagement
 {
@@ -23,8 +24,10 @@ namespace StudentActivityMenagement
             var serviceProvider = scope.ServiceProvider;
 
             var authInitService = serviceProvider.GetRequiredService<IAuthenticationInitializeService>();
-
             authInitService.Initialize();
+
+            var dataService = serviceProvider.GetRequiredService<IUnitOfWork>();
+            dataService.Initialize();
 
             host.Run();
         }

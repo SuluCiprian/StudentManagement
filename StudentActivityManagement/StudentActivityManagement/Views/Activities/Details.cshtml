@@ -43,8 +43,9 @@
                 {
                     <tr>
                         <td scope="row">@Model[iterator].Date</td>
-                        <th scope="row">@Model[iterator].Attendance</th>
-                        <th scope="row">@Model[iterator].Grade</th>
+                        <td scope="row">@Model[iterator].Attendance</td>
+                        <td scope="row">@Model[iterator].Grade</td>
+                        <td><a asp-action="Edit" asp-route-id="@Model[iterator].Id">Edit</a> </td>
                     </tr>
                 }
             </tbody>
@@ -53,6 +54,5 @@
 </div>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model[0].Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

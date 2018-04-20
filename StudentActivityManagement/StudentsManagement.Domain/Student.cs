@@ -9,6 +9,6 @@ namespace StudentsManagement.Domain
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
-        public List<Activity> Activities { get; set; }
+        public virtual ICollection<ActivityStudent> ActivitiesLink { get; set; }
     }
 }

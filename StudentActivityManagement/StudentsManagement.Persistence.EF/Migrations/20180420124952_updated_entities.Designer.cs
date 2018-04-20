@@ -11,9 +11,10 @@ using System;
 namespace StudentsManagement.Persistence.EF.Migrations
 {
     [DbContext(typeof(StudentsManagementContext))]
-    partial class StudentsManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20180420124952_updated_entities")]
+    partial class updated_entities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +70,7 @@ namespace StudentsManagement.Persistence.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ActivityTypes");
+                    b.ToTable("ActivityType");
                 });
 
             modelBuilder.Entity("StudentsManagement.Domain.ScheduleEntry", b =>

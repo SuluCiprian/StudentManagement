@@ -35,6 +35,11 @@ namespace StudentsManagement.Core
             _unitOfWork.Complete();
         }
 
+        public IEnumerable<ActivityType> GetAvailableActivityTypes()
+        {
+            return _unitOfWork.Activities.GetAvailableActivityTypes().ToList();
+        }
+
         public Activity GetDelete(int id)
         {
             var activity = _unitOfWork.Activities.GetById(id);
@@ -44,6 +49,7 @@ namespace StudentsManagement.Core
         public IEnumerable<Activity> Index()
         {
             var activities = _unitOfWork.Activities.GetAll();
+            
             //var activities = _unitOfWork.Students.GetActivitiesByStudentId(0);
             return activities;
         }

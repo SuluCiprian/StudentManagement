@@ -22,7 +22,14 @@ namespace StudentsManagement.Persistence.EF
 
         public IEnumerable<Activity> GetActivitiesByStudentId(int studId)
         {
-            return StudentsManagementContext.Students.FirstOrDefault(a => a.Id == studId).Activities;
+            var activityLinks = StudentsManagementContext.Students.FirstOrDefault(a => a.Id == studId).ActivitiesLink;
+            List<Activity> retActivities = new List<Activity>();
+            foreach (var activityLink in activityLinks)
+            {
+                retActivities.Add(activityLink.Activity);
+            }
+
+            return retActivities;
         }
 
         public StudentsManagementContext StudentsManagementContext

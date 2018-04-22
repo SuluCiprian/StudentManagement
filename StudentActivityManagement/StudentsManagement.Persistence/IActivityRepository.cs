@@ -8,5 +8,6 @@ namespace StudentsManagement.Persistence
     public interface IActivityRepository : IRepository<Activity>
     {
         IEnumerable<ActivityType> GetAvailableActivityTypes();
+        IEnumerable<Student> GetStudentsByActivityId(int id);
     }
 }

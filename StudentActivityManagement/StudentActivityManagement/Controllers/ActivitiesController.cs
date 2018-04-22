@@ -31,7 +31,6 @@ namespace StudentActivityMenagement.Controllers
 
             return View(activities);
         }
-        
 
         // GET: Activity/Details/5
         public IActionResult Details(int id)
@@ -73,6 +72,25 @@ namespace StudentActivityMenagement.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);
+        }
+
+        public IActionResult AddStudent()
+        {
+            return View("AddStudentToActivity");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddStudent(StudentViewModel student)
+        {
+            if (ModelState.IsValid)
+            {
+                Student stud = new Student { Name = student.Name, UserName = student.UserName };
+
+                _activitiesService.AddStudent(stud);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(student);
         }
 
         // GET: Activities/Edit/5

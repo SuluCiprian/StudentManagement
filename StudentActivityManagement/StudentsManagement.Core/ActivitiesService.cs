@@ -23,6 +23,11 @@ namespace StudentsManagement.Core
             _unitOfWork.Complete();
         }
 
+        public void AddStudent(Student student)
+        {
+
+        }
+
         public IEnumerable<StudentActivityInfo> Details(int id)
         {
             var activity = _unitOfWork.StudentActivityInfo.SearchFor(a => a.ActivityId == id).ToList();

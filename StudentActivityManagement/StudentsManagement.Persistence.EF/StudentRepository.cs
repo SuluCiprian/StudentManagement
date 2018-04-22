@@ -14,11 +14,7 @@ namespace StudentsManagement.Persistence.EF
              
         }
 
-        public IEnumerable<Student> GetStudentsByActivityId(int id)
-        {
-            //return StudentsManagementContext.Activities.SingleOrDefault(a => a.Id == id).Students.ToList();
-            return null;
-        }
+        
 
         public IEnumerable<Activity> GetActivitiesByStudentId(int studId)
         {

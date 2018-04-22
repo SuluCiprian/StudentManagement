@@ -38,6 +38,8 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
 
         public ICollection<ScheduleEntry> Schedule { get; set; }
 
+        public ICollection<ActivityStudent> StudentsLink { get; set; }
+
         public IEnumerable<ActivityType> ActivityTypes
         {
             get

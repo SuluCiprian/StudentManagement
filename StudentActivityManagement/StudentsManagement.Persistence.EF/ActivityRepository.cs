@@ -26,6 +26,17 @@ namespace StudentsManagement.Persistence.EF
             return StudentsManagementContext.ActivityTypes.AsEnumerable();
         }
 
+        public IEnumerable<Student> GetStudentsByActivityId(int id)
+        {
+            var studentsLink = StudentsManagementContext.Activities.SingleOrDefault(a => a.Id == id).StudentsLink;
+            List<Student> retStudents = new List<Student>();
+            foreach (var studentLink in studentsLink)
+            {
+                retStudents.Add(studentLink.Student);
+            }
+            return retStudents;
+        }
+
         public StudentsManagementContext StudentsManagementContext
         {
             get

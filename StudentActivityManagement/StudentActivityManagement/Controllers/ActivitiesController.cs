@@ -49,6 +49,16 @@ namespace StudentActivityMenagement.Controllers
             return View(activity);
         }
 
+        // GET: Activity/Info/5
+        public IActionResult Info(int id)
+        {
+            TeacherActivityViewModel teacherActivity = new TeacherActivityViewModel();
+            teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(id);
+            teacherActivity.ActivityInfos = _activitiesService.GetActivityInfos(id);
+
+            return View(teacherActivity);
+        }
+
         // GET: Activity/Create
         public IActionResult Create()
         {

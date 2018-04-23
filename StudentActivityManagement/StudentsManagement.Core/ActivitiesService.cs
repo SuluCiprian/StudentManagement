@@ -40,6 +40,16 @@ namespace StudentsManagement.Core
             _unitOfWork.Complete();
         }
 
+        public IEnumerable<StudentActivityInfo> GetActivityInfos(int activityId)
+        {
+            return _unitOfWork.StudentActivityInfo.SearchFor(a => a.ActivityId == activityId);
+        }
+
+        public IEnumerable<Student> GetStudentsOnActivity(int id)
+        {
+            return _unitOfWork.Activities.GetStudentsByActivityId(id);
+        }
+
         public IEnumerable<ActivityType> GetAvailableActivityTypes()
         {
             return _unitOfWork.Activities.GetAvailableActivityTypes().ToList();

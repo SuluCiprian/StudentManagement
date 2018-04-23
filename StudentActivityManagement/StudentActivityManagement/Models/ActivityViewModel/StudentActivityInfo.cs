@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace StudentActivityMenagement.Models.ActivityViewModel
 {
-    public class StudentActivityInfo
+    public class StudentActivityInfo1
     {
         public int IdActivity { get; set; }
 

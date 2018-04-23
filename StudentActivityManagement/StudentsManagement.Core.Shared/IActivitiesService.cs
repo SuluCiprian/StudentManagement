@@ -16,5 +16,7 @@ namespace StudentsManagement.Core.Shared
         bool StudentExists(int id);
         IEnumerable<ActivityType> GetAvailableActivityTypes();
         void AddStudent(Student student);
+        IEnumerable<Student> GetStudentsOnActivity(int id);
+        IEnumerable<StudentActivityInfo> GetActivityInfos(int activityId);
     }
 }

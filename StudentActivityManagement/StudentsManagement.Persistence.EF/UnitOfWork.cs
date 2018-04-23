@@ -44,6 +44,12 @@ namespace StudentsManagement.Persistence.EF
             if (!_context.ActivityTypes.Any(at => at.Name.Equals("Laboratory")))
                 _context.ActivityTypes.Add(new Domain.ActivityType { Name = "Laboratory" });
 
+            if (!_context.Students.Any(at => at.UserName.Equals("test@test.com")))
+                _context.Students.Add(new Domain.Student { UserName = "test@test.com", Name = "Test Teston Jr." });
+            _context.SaveChanges();
+
+            if (!_context.Teachers.Any(at => at.UserName.Equals("teacher@gmail.com")))
+                _context.Teachers.Add(new Domain.Teacher { UserName = "teacher@gmail.com", Name = "Buffalo Smith" });
             _context.SaveChanges();
 
         }

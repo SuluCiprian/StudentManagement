@@ -44,6 +44,7 @@ namespace StudentActivityMenagement
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             
             // Add application services.
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IEmailSender, EmailSender>(instance => new EmailSender());
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IAuthenticationInitializeService, AuthenticationInitializeService>();

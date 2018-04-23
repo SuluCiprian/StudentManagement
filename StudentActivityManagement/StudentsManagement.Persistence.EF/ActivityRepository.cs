@@ -47,8 +47,7 @@ namespace StudentsManagement.Persistence.EF
 
         public override IEnumerable<Activity> GetAll()
         {
-            return StudentsManagementContext.Activities
-                .Include(a => a.Type).AsEnumerable();
+            return StudentsManagementContext.Activities.AsEnumerable();                
         }
     }
 }

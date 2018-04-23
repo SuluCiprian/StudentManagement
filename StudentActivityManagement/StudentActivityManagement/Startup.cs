@@ -34,14 +34,18 @@ namespace StudentActivityMenagement
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<StudentsManagementContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("StudentsManagement")));
+            
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            var dataService = services.BuildServiceProvider().GetService<IUnitOfWork>();
+            if (dataService != null)
+            {
+                dataService.InitializeContext(services, Configuration);                    
+            }
             
             // Add application services.
             services.AddTransient<IUserService, UserService>();

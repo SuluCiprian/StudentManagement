@@ -9,9 +9,9 @@ namespace StudentsManagement.Domain
         public int Id { get; set; }
 
         public int ActivityId { get; set; }
-        public Activity Activity { get; set; }
+        public virtual Activity Activity { get; set; }
 
         public int StudentId { get; set; }
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

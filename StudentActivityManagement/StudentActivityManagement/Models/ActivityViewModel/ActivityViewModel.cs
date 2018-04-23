@@ -58,5 +58,10 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
             get;
             private set;
         }
+
+        public List<DateTime> Occurences { get; set; }
+
+        public List<int> StudentIds { get; set; }
+        public List<Student> Students { get; set; }
     }
 }

@@ -19,22 +19,25 @@ namespace StudentActivityMenagement
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
-
-            var scope = host.Services.CreateScope();
-            var serviceProvider = scope.ServiceProvider;
+            
+             var scope = host.Services.CreateScope();
+             var serviceProvider = scope.ServiceProvider;
+            
+            var dataService = serviceProvider.GetService<IUnitOfWork>();
+            dataService.InitializeData(serviceProvider);
+            
 
             var authInitService = serviceProvider.GetRequiredService<IAuthenticationInitializeService>();
             authInitService.Initialize();
 
-            var dataService = serviceProvider.GetRequiredService<IUnitOfWork>();
-            dataService.Initialize();
+            
 
             host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+                .UseStartup<Startup>()                
                 .Build();
     }
 }

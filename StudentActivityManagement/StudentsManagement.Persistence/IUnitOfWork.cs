@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +13,7 @@ namespace StudentsManagement.Persistence
         IActivityRepository Activities { get; }
         IStudentActivityInfoRepository StudentActivityInfo { get; }
         int Complete();
-        void Initialize();
+        void InitializeContext(IServiceCollection services, IConfiguration config);
+        void InitializeData(IServiceProvider serviceProvider);
     }
 }

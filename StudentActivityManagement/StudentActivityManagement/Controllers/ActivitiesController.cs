@@ -49,6 +49,16 @@ namespace StudentActivityMenagement.Controllers
             return View(activity);
         }
 
+        // GET: Activity/Info/5
+        public IActionResult Info(int id)
+        {
+            TeacherActivityViewModel teacherActivity = new TeacherActivityViewModel();
+            teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(id);
+            teacherActivity.ActivityInfos = _activitiesService.GetActivityInfos(id);
+
+            return View("TeacherActivity", teacherActivity);
+        }
+
         // GET: Activity/Create
         public IActionResult Create()
         {
@@ -81,13 +91,13 @@ namespace StudentActivityMenagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddStudent(StudentViewModel student)
+        public IActionResult AddStudent(int id, StudentViewModel student)
         {
             if (ModelState.IsValid)
             {
                 Student stud = new Student { Name = student.Name, UserName = student.UserName };
 
-                _activitiesService.AddStudent(stud);
+                _activitiesService.AddStudent(id, stud);
                 return RedirectToAction(nameof(Index));
             }
             return View(student);

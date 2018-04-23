@@ -6,10 +6,10 @@ using System.Text;
 
 namespace StudentsManagement.Persistence.EF
 {
-    public class StudentsManagementContext: DbContext
+    public class StudentsManagementContext : DbContext
     {
         public StudentsManagementContext(DbContextOptions<StudentsManagementContext> options)
-            :base(options)
+            : base(options)
         {
         }
 
@@ -19,13 +19,11 @@ namespace StudentsManagement.Persistence.EF
         public virtual DbSet<ActivityType> ActivityTypes { get; set; }
         public virtual DbSet<StudentActivityInfo> StudentActivityInfo { get; set; }
         public virtual DbSet<ActivityStudent> ActivityStudents { get; set; }
-        
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            builder.Entity<ActivityStudent>().HasKey(a => new { a.ActivityId, a.StudentId });
         }
     }
 }

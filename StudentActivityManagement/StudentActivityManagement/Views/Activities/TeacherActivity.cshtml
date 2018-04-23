@@ -1,28 +1,38 @@
-﻿@model StudentActivityMenagement.Models.ActivityViewModel.AllStudentsOnActivity
+﻿@model StudentActivityMenagement.Models.ActivityViewModel.TeacherActivityViewModel
 @{
     ViewData["Title"] = "Activity";
 }
-<h3>@ViewData["Title"] @Model.ActivityName</h3>
+
 <div class="row">
     <div class="col-md-6">
-        <h4>All students at this activity</h4>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Student Id</th>
-                    <th scope="col">Student Name</th>
+                    <th scope="col" rowspan="2">Student Name</th>
+                    <th scope="col" colspan="2">Activity 1</th>
+                <tr>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Attendance</th>
+                </tr>
                 </tr>
             </thead>
             <tbody>
-                @for (int iterator = 0; iterator < Model.Id.Count; ++iterator)
+                @for (var iterator = 0; iterator < Model.StudentsOnActivity.ToList().Capacity; iterator++)
                 {
                     <tr>
-                        <td scope="row">@Model.Id[iterator]</td>
-                        <th scope="row">
-                            <a asp-action="Activity/@Model.Id[iterator]/Student" asp-route-id="@Model.Id[iterator]">@Model.Name[iterator]</a>
-                        </th>
+                        <th scope="row" rowspan="2">@Model.StudentsOnActivity.ElementAt(iterator).Name</th>
+                    <tr>
+                        <th scope="row">@Model.ActivityInfos.ElementAt(iterator).Grade</th>
+                        <th scope="row">@Model.ActivityInfos.ElementAt(iterator).Attendance</th>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="">Edit</a> |
+                            <a asp-action="Details" asp-route-id="">Details</a> |
+                            <a asp-action="Delete" asp-route-id="">Delete</a>
+                        </td>
+                    </tr>
                     </tr>
                 }
+
             </tbody>
         </table>
     </div>

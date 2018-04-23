@@ -23,9 +23,9 @@ namespace StudentsManagement.Core
             _unitOfWork.Complete();
         }
 
-        public void AddStudent(Student student)
+        public void AddStudent(int activityId, Student student)
         {
-
+            _unitOfWork.Activities.AddStudentToActivity(activityId, student);
         }
 
         public IEnumerable<StudentActivityInfo> Details(int id)
@@ -38,6 +38,16 @@ namespace StudentsManagement.Core
         {
             _unitOfWork.StudentActivityInfo.Insert(activityInfo);
             _unitOfWork.Complete();
+        }
+
+        public IEnumerable<StudentActivityInfo> GetActivityInfos(int activityId)
+        {
+            return _unitOfWork.StudentActivityInfo.SearchFor(a => a.ActivityId == activityId);
+        }
+
+        public IEnumerable<Student> GetStudentsOnActivity(int id)
+        {
+            return _unitOfWork.Activities.GetStudentsByActivityId(id);
         }
 
         public IEnumerable<ActivityType> GetAvailableActivityTypes()

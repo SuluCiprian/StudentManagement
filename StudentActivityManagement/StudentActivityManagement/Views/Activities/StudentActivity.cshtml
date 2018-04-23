@@ -1,27 +1,34 @@
-﻿@model StudentActivityMenagement.Models.ActivityViewModel.StudentActivityInfo
+﻿@model StudentActivityMenagement.Models.ActivityViewModel.ActivityViewModel
 @{
     ViewData["Title"] = "Activity";
 }
-<h3>@ViewData["Title"] @Model.IdActivity</h3>
+<h3>@ViewData["Title"] @Model.Name</h3>
 <div class="row">
     <div class="col-md-6">
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Attendance</th>
+                    <th scope="col" rowspan="2">Student Name</th>
+                    <th scope="col" colspan="2">Activity 1</th>
+                <tr>
                     <th scope="col">Grade</th>
+                    <th scope="col">Attendance</th>
+                </tr>
                 </tr>
             </thead>
             <tbody>
-                @for (int iterator = 0; iterator < Model.Date.Count; ++iterator)
-                {
-                    <tr>
-                        <td scope="row">@Model.Date[iterator]</td>
-                        <th scope="row">@Model.Attendance[iterator]</th>
-                        <th scope="row">@Model.Grade[iterator]</th>
-                    </tr>
-                }
+                <tr>
+                    <th scope="row" rowspan="2">Student Name</th>
+                <tr>
+                    <th scope="row">10</th>
+                    <th scope="row">yes</th>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@Model.IdActivities[iterator]">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@Model.IdActivities[iterator]">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@Model.IdActivities[iterator]">Delete</a>
+                    </td>
+                </tr>
+                </tr>
             </tbody>
         </table>
     </div>

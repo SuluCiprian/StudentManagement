@@ -37,6 +37,17 @@ namespace StudentsManagement.Persistence.EF
             return retStudents;
         }
 
+        public void AddStudentToActivity(int activityId, Student student)
+        {
+            ActivityStudent activityStudent = new ActivityStudent();
+            activityStudent.StudentId = student.Id;
+            activityStudent.Student = student;
+            activityStudent.ActivityId = activityId;
+
+            var activity = StudentsManagementContext.Activities.Find(activityId);
+            activity.StudentsLink.Add(activityStudent);
+        }
+
         public StudentsManagementContext StudentsManagementContext
         {
             get

@@ -15,7 +15,7 @@ namespace StudentsManagement.Core.Shared
         void PostDelete(int id);
         bool StudentExists(int id);
         IEnumerable<ActivityType> GetAvailableActivityTypes();
-        void AddStudent(Student student);
+        void AddStudent(int activityId, Student student);
         IEnumerable<Student> GetStudentsOnActivity(int id);
         IEnumerable<StudentActivityInfo> GetActivityInfos(int activityId);
     }

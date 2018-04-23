@@ -23,9 +23,9 @@ namespace StudentsManagement.Core
             _unitOfWork.Complete();
         }
 
-        public void AddStudent(Student student)
+        public void AddStudent(int activityId, Student student)
         {
-
+            _unitOfWork.Activities.AddStudentToActivity(activityId, student);
         }
 
         public IEnumerable<StudentActivityInfo> Details(int id)

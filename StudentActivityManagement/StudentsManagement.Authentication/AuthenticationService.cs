@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using StudentsManagement.Core.Shared;
+using StudentsManagement.Domain;
 using System;
 using System.Collections.Generic;
 using System.Security.Principal;
@@ -16,19 +17,22 @@ namespace StudentsManagement.Authentication
         private readonly IEmailSender emailSender;
         private readonly ILogger logger;
         private readonly IBusinessLogic businessLogic;
+        private readonly IUserService userService;
 
         public AuthenticationService(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             IBusinessLogic businessLogic,
-            ILogger<AuthenticationService> logger)
+            ILogger<AuthenticationService> logger,
+            IUserService userService)
         {
             this.businessLogic = businessLogic;
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.emailSender = emailSender;
             this.logger = logger;
+            this.userService = userService;
         }
 
         public bool IsUserSignedIn()
@@ -59,7 +63,7 @@ namespace StudentsManagement.Authentication
             return retVal;
         }
 
-        public async Task<bool> Register(string userName, string password, bool isStudent)
+        public async Task<bool> Register(string userName, string password, string fullName, bool isStudent)
         {
             bool retVal = false;
             var user = new ApplicationUser { UserName = userName, Email = userName };
@@ -71,10 +75,17 @@ namespace StudentsManagement.Authentication
                 if (isStudent)
                 {
                     await userManager.AddToRoleAsync(user, "Student");
+                    Student student = new Student { UserName = userName, Name = fullName };
+                    userService.CreateStudent(student);
+
+
                 }
                 else
                 {
                     await userManager.AddToRoleAsync(user, "Teacher");
+                    Teacher teacher = new Teacher { UserName = userName, Name = fullName };
+                    userService.CreateTeacher(teacher);
+
                 }
                 retVal = true;
             }

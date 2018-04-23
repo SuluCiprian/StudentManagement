@@ -12,7 +12,7 @@ namespace StudentsManagement.Core.Shared
         string GetUserName();
 
         Task<bool> Login(string userName, string password, bool remeberUser);
-        Task<bool> Register(string userName, string password, bool isStudent);
+        Task<bool> Register(string userName, string password, string fullName, bool isStudent);
         Task<bool> Logout();
     }
 }

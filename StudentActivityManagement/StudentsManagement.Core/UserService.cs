@@ -27,5 +27,16 @@ namespace StudentsManagement.Core
             unitOfWork.Teachers.Insert(teacher);
             unitOfWork.Complete();
         }
+
+        public IEnumerable<Student> GetStudents()
+        {
+            IEnumerable<Student> students = unitOfWork.Students.GetStudents();
+            return students;
+        }
+
+        public IEnumerable<Teacher> GetTeacher()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

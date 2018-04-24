@@ -28,6 +28,11 @@ namespace StudentsManagement.Persistence.EF
             return retActivities;
         }
 
+        public IEnumerable<Student> GetStudents()
+        {
+            return StudentsManagementContext.Students.ToList();
+        }
+
         public StudentsManagementContext StudentsManagementContext
         {
             get

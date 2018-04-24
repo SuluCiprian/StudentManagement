@@ -10,5 +10,7 @@ namespace StudentsManagement.Persistence
         IEnumerable<ActivityType> GetAvailableActivityTypes();
         IEnumerable<Student> GetStudentsByActivityId(int id);
         void AddStudentToActivity(int activityId, Student student);
+
+        IEnumerable<Activity> GetActivities();
     }
 }

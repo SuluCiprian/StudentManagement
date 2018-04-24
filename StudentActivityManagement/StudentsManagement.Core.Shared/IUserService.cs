@@ -9,5 +9,8 @@ namespace StudentsManagement.Core.Shared
     {
         void CreateStudent(Student student);
         void CreateTeacher(Teacher teacher);
+
+        IEnumerable<Student> GetStudents();
+        IEnumerable<Teacher> GetTeacher();
     }
 }

@@ -18,5 +18,6 @@ namespace StudentsManagement.Core.Shared
         void AddStudent(int activityId, Student student);
         IEnumerable<Student> GetStudentsOnActivity(int id);
         IEnumerable<StudentActivityInfo> GetActivityInfos(int activityId);
+
     }
 }

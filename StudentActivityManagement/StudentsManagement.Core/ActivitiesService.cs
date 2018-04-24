@@ -64,7 +64,7 @@ namespace StudentsManagement.Core
         public IEnumerable<Activity> Index()
         {
             var activities = _unitOfWork.Activities.GetAll();
-            
+
             //var activities = _unitOfWork.Students.GetActivitiesByStudentId(0);
             return activities;
         }
@@ -79,6 +79,11 @@ namespace StudentsManagement.Core
         public bool StudentExists(int id)
         {
             return _unitOfWork.Students.GetById(id) != null ? true : false;
+        }
+
+        public void CreateScheduleEntry(ScheduleEntry scheduleEntry)
+        {
+            throw new NotImplementedException();
         }
     }
 }

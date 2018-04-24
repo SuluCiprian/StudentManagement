@@ -16,10 +16,12 @@ namespace StudentActivityMenagement.Controllers
     public class ActivitiesController : Controller
     {
         private readonly IActivitiesService _activitiesService;
+        private readonly IUserService userService;
 
-        public ActivitiesController(IActivitiesService activitiesService)
+        public ActivitiesController(IActivitiesService activitiesService, IUserService userService)
         {
             _activitiesService = activitiesService;
+            this.userService = userService;
         }
 
 
@@ -64,10 +66,12 @@ namespace StudentActivityMenagement.Controllers
         {
             ActivityViewModel vm = new ActivityViewModel();
             vm.ActivityTypes = _activitiesService.GetAvailableActivityTypes();
-            
+
+            List<Student> students = userService.GetStudents().ToList();
+            vm.Students = students;
+
             return View(vm);
         }
-
         
         [HttpPost]
         [ValidateAntiForgeryToken]

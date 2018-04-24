@@ -16,30 +16,38 @@ namespace StudentActivityMenagement.Controllers
     public class ActivitiesController : Controller
     {
         private readonly IActivitiesService _activitiesService;
+        private readonly IStudentsService _studentsService;
+        private readonly IAuthenticationService _authenticationService;
 
-        public ActivitiesController(IActivitiesService activitiesService)
+        public ActivitiesController(IActivitiesService activitiesService, IStudentsService studentsService, IAuthenticationService authenticationService)
         {
             _activitiesService = activitiesService;
+            _studentsService = studentsService;
+            _authenticationService = authenticationService;
         }
 
 
         public IActionResult Index()
         {
             ViewData["Message"] = "Your application activities page.";
+            
+            if(_authenticationService.IsUserStudent())
+            {
+                var activities = _activitiesService.GetStudentActivities(1);
+                return View(activities);
+            } else
+            {
+                var activities = _activitiesService.GetTeacherActivities(1);
+                return View(activities);
+            }
 
-            var activities = _activitiesService.Index();
-
-            return View(activities);
+            //var activities = _activitiesService.Index();
+            //return View(activities);
         }
 
         // GET: Activity/Details/5
         public IActionResult Details(int id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
             var activity = _activitiesService.Details(id);
             if (activity == null)
             {
@@ -52,6 +60,7 @@ namespace StudentActivityMenagement.Controllers
         // GET: Activity/Info/5
         public IActionResult Info(int id)
         {
+
             TeacherActivityViewModel teacherActivity = new TeacherActivityViewModel();
             teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(id);
             teacherActivity.ActivityInfos = _activitiesService.GetActivityInfos(id);
@@ -78,7 +87,10 @@ namespace StudentActivityMenagement.Controllers
                 activity.ActivityTypes = _activitiesService.GetAvailableActivityTypes(); 
                 Activity act = new Activity { Name = activity.Name, Description = activity.Description, Type = activity.SelectedType };
 
-                _activitiesService.Create(act);
+                var id = _authenticationService.GetUserId();
+
+               // _activitiesService.Create(act);
+                _activitiesService.CreateActivityForTeacher(id, act);
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);
@@ -86,7 +98,8 @@ namespace StudentActivityMenagement.Controllers
 
         public IActionResult AddStudent()
         {
-            return View("AddStudentToActivity");
+            var students = _studentsService.GetAllStudents();
+            return View("AddStudentToActivity",students);
         }
 
         [HttpPost]
@@ -97,7 +110,7 @@ namespace StudentActivityMenagement.Controllers
             {
                 Student stud = new Student { Name = student.Name, UserName = student.UserName };
 
-                _activitiesService.AddStudent(id, stud);
+                _studentsService.AddStudentToActivity(id, stud);
                 return RedirectToAction(nameof(Index));
             }
             return View(student);

@@ -31,11 +31,6 @@ namespace StudentsManagement.Core
             return service;
         }
 
-        public IStudentService GetStudentService()
-        {
-            throw new NotImplementedException();
-        }
-
         
         public void Initialize(IServiceCollection serviceCollection)
         {

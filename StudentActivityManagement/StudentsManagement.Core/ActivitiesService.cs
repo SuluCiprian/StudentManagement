@@ -23,11 +23,6 @@ namespace StudentsManagement.Core
             _unitOfWork.Complete();
         }
 
-        public void AddStudent(int activityId, Student student)
-        {
-            _unitOfWork.Activities.AddStudentToActivity(activityId, student);
-        }
-
         public IEnumerable<StudentActivityInfo> Details(int id)
         {
             var activity = _unitOfWork.StudentActivityInfo.SearchFor(a => a.ActivityId == id).ToList();
@@ -46,13 +41,19 @@ namespace StudentsManagement.Core
         }
 
         public IEnumerable<Student> GetStudentsOnActivity(int id)
-        {
-            return _unitOfWork.Activities.GetStudentsByActivityId(id);
+        {            
+            var studentsWithId = _unitOfWork.Activities.GetStudentsByActivityId(id);
+            return studentsWithId;
         }
 
         public IEnumerable<ActivityType> GetAvailableActivityTypes()
         {
             return _unitOfWork.Activities.GetAvailableActivityTypes().ToList();
+        }
+
+        public void CreateActivityForTeacher(int teacherId, Activity activity)
+        {
+            _unitOfWork.Teachers.CreateActivityForTeacher(teacherId, activity);
         }
 
         public Activity GetDelete(int id)
@@ -63,9 +64,19 @@ namespace StudentsManagement.Core
 
         public IEnumerable<Activity> Index()
         {
-            var activities = _unitOfWork.Activities.GetAll();
-            
-            //var activities = _unitOfWork.Students.GetActivitiesByStudentId(0);
+            var activities = _unitOfWork.Activities.GetAll();            
+            return activities;
+        }
+
+        public IEnumerable<Activity> GetStudentActivities(int studId)
+        {
+            var activities = _unitOfWork.Students.GetActivitiesByStudentId(studId);
+            return activities;
+        }
+
+        public IEnumerable<Activity> GetTeacherActivities(int teachId)
+        {
+            var activities = _unitOfWork.Teachers.GetActivitiesByTeacherId(teachId);
             return activities;
         }
 

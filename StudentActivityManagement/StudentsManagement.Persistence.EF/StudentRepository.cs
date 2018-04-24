@@ -12,9 +12,7 @@ namespace StudentsManagement.Persistence.EF
             :base(context)
         {
              
-        }
-
-        
+        }        
 
         public IEnumerable<Activity> GetActivitiesByStudentId(int studId)
         {
@@ -26,7 +24,7 @@ namespace StudentsManagement.Persistence.EF
             }
 
             return retActivities;
-        }
+        }        
 
         public StudentsManagementContext StudentsManagementContext
         {

@@ -7,6 +7,5 @@ namespace StudentsManagement.Core.Shared
     public interface IBusinessLogic : IInitializer
     {
         IAuthenticationService GetAuthenticationService();
-        IStudentService GetStudentService();
     }
 }

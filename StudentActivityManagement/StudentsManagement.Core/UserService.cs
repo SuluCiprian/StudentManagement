@@ -27,5 +27,11 @@ namespace StudentsManagement.Core
             unitOfWork.Teachers.Insert(teacher);
             unitOfWork.Complete();
         }
+
+        public int GetUserId(string userName)
+        {
+            var user = unitOfWork.Teachers.GetTeacherWithUserName(userName);
+            return user.Id;
+        }
     }
 }

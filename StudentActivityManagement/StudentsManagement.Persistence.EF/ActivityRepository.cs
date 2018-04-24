@@ -45,6 +45,8 @@ namespace StudentsManagement.Persistence.EF
             activityStudent.ActivityId = activityId;
 
             var activity = StudentsManagementContext.Activities.Find(activityId);
+            activityStudent.Activity = activity;
+            
             activity.StudentsLink.Add(activityStudent);
         }
 

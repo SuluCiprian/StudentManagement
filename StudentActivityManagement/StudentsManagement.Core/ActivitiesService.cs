@@ -109,5 +109,10 @@ namespace StudentsManagement.Core
         {
             throw new NotImplementedException();
         }
+
+        public void AddStudent(int activityId, Student student)
+        {
+            _unitOfWork.Activities.AddStudentToActivity(activityId, student);
+        }
     }
 }

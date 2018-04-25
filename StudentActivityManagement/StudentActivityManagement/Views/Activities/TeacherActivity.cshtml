@@ -7,13 +7,21 @@
     <div class="col-md-6">
         <table class="table">
             <thead>
+
                 <tr>
                     <th scope="col" rowspan="2">Student Name</th>
-                    <th scope="col" colspan="2">Activity 1</th>
-                <tr>
-                    <th scope="col">Grade</th>
-                    <th scope="col">Attendance</th>
+                    @for (int i = 0; i < Model.ScheduleEntries.ToList().Capacity; i++)
+                    {
+                        <th scope="col" colspan="2">Activity @i</th>
+                    }
                 </tr>
+                <tr>
+                    @for (int i = 0; i < Model.ScheduleEntries.ToList().Capacity; i++)
+                    {
+                        <th scope="col">Grade</th>
+                        <th scope="col">Attendance</th>
+                    }
+
                 </tr>
             </thead>
             <tbody>
@@ -21,15 +29,19 @@
                 {
                     <tr>
                         <th scope="row" rowspan="2">@Model.StudentsOnActivity.ElementAt(iterator).Name</th>
-                    <tr>
-                        <th scope="row">@Model.ActivityInfos.ElementAt(iterator).Grade</th>
-                        <th scope="row">@Model.ActivityInfos.ElementAt(iterator).Attendance</th>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="">Edit</a> |
-                            <a asp-action="Details" asp-route-id="">Details</a> |
-                            <a asp-action="Delete" asp-route-id="">Delete</a>
-                        </td>
                     </tr>
+
+                    <tr>
+                        @for (int i = 0; i < Model.ActivityInfos.ToList().Capacity; i++)
+                        {
+                            <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
+                            <th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="">Edit</a> |
+                                <a asp-action="Details" asp-route-id="">Details</a> |
+                                <a asp-action="Delete" asp-route-id="">Delete</a>
+                            </td>
+                        }
                     </tr>
                 }
 

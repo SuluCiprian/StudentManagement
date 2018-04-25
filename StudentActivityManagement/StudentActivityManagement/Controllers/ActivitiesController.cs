@@ -71,11 +71,26 @@ namespace StudentActivityMenagement.Controllers
             }
             else
             {
-                var userId = _authenticationService.GetUserId();
-                var teacherActivity = new TeacherActivityViewModel();
-                teacherActivity.ActivityInfos = activityInfos;
-                teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(userId);
+                var teacherActivity = new TeacherActivityViewModel();                
+                teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(id);
                 teacherActivity.ScheduleEntries = scheduleEntries;
+
+                if (activityInfos.ToList().Capacity == 0)
+                {
+                    List<StudentActivityInfo> infos = new List<StudentActivityInfo>();
+                    for (int i = 0; i < scheduleEntries.ToList().Capacity; i++)
+                    {
+                        foreach (var item in teacherActivity.StudentsOnActivity)
+                        {
+                            infos.Add(new StudentActivityInfo { ActivityId = id, StudentId = item.Id });
+                        }                        
+                    }
+                    teacherActivity.ActivityInfos = infos;
+                }
+                else
+                {
+                    teacherActivity.ActivityInfos = activityInfos;
+                }                
                 return View("TeacherActivity", teacherActivity);
             }
         }
@@ -120,10 +135,10 @@ namespace StudentActivityMenagement.Controllers
                 }
                 activity.ActivityTypes = _activitiesService.GetAvailableActivityTypes();
                 Activity act = new Activity { Id = 0, Name = activity.Name, Description = activity.Description, Type = activity.SelectedType, Schedule = schedule };
+                act.StudentsLink = new List<ActivityStudent>();
                 foreach (var student in studentsList)
-                {
-                    act.StudentsLink = new List<ActivityStudent>();
-                    act.StudentsLink.Add(new ActivityStudent { Id = 0, Activity = act, Student = student });
+                {                    
+                    act.StudentsLink.Add(new ActivityStudent { Activity = act, Student = student });
                 }
 
                 var id = _authenticationService.GetUserId();
@@ -162,21 +177,18 @@ namespace StudentActivityMenagement.Controllers
             return View();
         }
 
+        // [Bind("ActivityId,StudentId,Grade,Attendance,Occurance")] StudentsManagement.Domain.StudentActivityInfo activity
         // POST: Activities/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("ActivityId,StudentId,Grade,Attendance,Date")] StudentsManagement.Domain.StudentActivityInfo activity)
+        public IActionResult Edit(int id, int studId, [Bind("ActivityId,StudentId,Grade,Attendance,Occurance")] StudentsManagement.Domain.StudentActivityInfo activity)
         {
-            //if (id != activity.ActivityId)
-            //{
-            //    return NotFound();
-            //}
-
             activity.ActivityId = id;
+            activity.StudentId = studId;
 
             if (ModelState.IsValid)
             {
-                _activitiesService.Edit(id, activity);
+                _activitiesService.Edit(activity);
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);

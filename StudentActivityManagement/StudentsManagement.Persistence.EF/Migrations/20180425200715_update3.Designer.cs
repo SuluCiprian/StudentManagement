@@ -10,9 +10,10 @@ using StudentsManagement.Persistence.EF;
 namespace StudentsManagement.Persistence.EF.Migrations
 {
     [DbContext(typeof(StudentsManagementContext))]
-    partial class StudentsManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20180425200715_update3")]
+    partial class update3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

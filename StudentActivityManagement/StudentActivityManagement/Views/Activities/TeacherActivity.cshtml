@@ -20,6 +20,7 @@
                     {
                         <th scope="col">Grade</th>
                         <th scope="col">Attendance</th>
+                        <th scope="col"></th>
                     }
 
                 </tr>
@@ -37,10 +38,9 @@
                             <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
                             <th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>
                             <td>
-                                <a asp-action="Edit" asp-route-id="">Edit</a> |
-                                <a asp-action="Details" asp-route-id="">Details</a> |
-                                <a asp-action="Delete" asp-route-id="">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@Model.ActivityInfos.ElementAt(i).ActivityId" asp-route-id1="@Model.StudentsOnActivity.ElementAt(iterator).Id">Edit</a>
                             </td>
+                        }
                         }
                     </tr>
                 }

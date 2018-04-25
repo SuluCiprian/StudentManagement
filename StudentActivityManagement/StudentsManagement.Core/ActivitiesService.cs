@@ -29,7 +29,7 @@ namespace StudentsManagement.Core
             return activity;
         }
 
-        public void Edit(int id, StudentActivityInfo activityInfo)
+        public void Edit(StudentActivityInfo activityInfo)
         {
             _unitOfWork.StudentActivityInfo.Insert(activityInfo);
             _unitOfWork.Complete();

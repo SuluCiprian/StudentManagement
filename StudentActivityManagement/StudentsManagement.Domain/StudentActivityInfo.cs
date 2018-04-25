@@ -11,6 +11,6 @@ namespace StudentsManagement.Domain
         public int StudentId { get; set; }
         public int Grade { get; set; }
         public int Attendance { get; set; }
-        public DateTime Date { get; set; }
+        public virtual ScheduleEntry Occurance { get; set; }
     }
 }

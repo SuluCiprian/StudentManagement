@@ -8,6 +8,8 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
 {
     public class TeacherActivityViewModel
     {
+        public int ActivityId { get; set; }
+
         public IEnumerable<Student> StudentsOnActivity { get; set; }
 
         public IEnumerable<StudentActivityInfo> ActivityInfos { get; set; }

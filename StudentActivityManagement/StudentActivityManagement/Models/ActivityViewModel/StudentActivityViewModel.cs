@@ -9,6 +9,8 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
 {
     public class StudentActivityViewModel
     {
+        public int ActivityId { get; set; }
+
         public IEnumerable<StudentActivityInfo> ActivityInfos { get; set; }
 
         public IEnumerable<ScheduleEntry> Schedules { get; set; }

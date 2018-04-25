@@ -54,6 +54,7 @@ namespace StudentsManagement.Core
         public void CreateActivityForTeacher(int teacherId, Activity activity)
         {
             _unitOfWork.Teachers.CreateActivityForTeacher(teacherId, activity);
+            _unitOfWork.Complete();
         }
 
         public Activity GetDelete(int id)

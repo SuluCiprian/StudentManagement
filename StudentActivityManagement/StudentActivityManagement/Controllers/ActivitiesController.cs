@@ -30,14 +30,15 @@ namespace StudentActivityMenagement.Controllers
         public IActionResult Index()
         {
             ViewData["Message"] = "Your application activities page.";
-            
-            if(_authenticationService.IsUserStudent())
-            {
-                var activities = _activitiesService.GetStudentActivities(1);
+            var id = _authenticationService.GetUserId();
+
+            if (_authenticationService.IsUserStudent())
+            {                
+                var activities = _activitiesService.GetStudentActivities(id);
                 return View(activities);
             } else
             {
-                var activities = _activitiesService.GetTeacherActivities(1);
+                var activities = _activitiesService.GetTeacherActivities(id);
                 return View(activities);
             }
 

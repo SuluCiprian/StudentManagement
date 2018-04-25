@@ -9,6 +9,7 @@ namespace StudentsManagement.Core.Shared
     {
         void CreateStudent(Student student);
         void CreateTeacher(Teacher teacher);
-        int GetUserId(string userName);
+        int GetTeacherId(string userName);
+        int GetStudentId(string userName);
     }
 }

@@ -53,7 +53,14 @@ namespace StudentsManagement.Authentication
         public int GetUserId()
         {
             var userName = GetUserName();
-            return userService.GetUserId(userName);
+            if (IsUserStudent())
+            {
+                return userService.GetStudentId(userName);
+            }
+            else
+            {
+                return userService.GetTeacherId(userName);
+            }            
         }
 
         public async Task<bool> Login(string userName, string password, bool remeberUser)

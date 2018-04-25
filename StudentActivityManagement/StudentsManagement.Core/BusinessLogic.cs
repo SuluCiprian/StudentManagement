@@ -30,6 +30,7 @@ namespace StudentsManagement.Core
         {
             return service;
         }
+
         
         public void Initialize(IServiceCollection serviceCollection)
         {

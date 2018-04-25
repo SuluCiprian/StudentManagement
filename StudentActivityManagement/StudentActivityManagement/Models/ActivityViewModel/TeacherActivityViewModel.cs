@@ -11,5 +11,7 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
         public IEnumerable<Student> StudentsOnActivity { get; set; }
 
         public IEnumerable<StudentActivityInfo> ActivityInfos { get; set; }
+
+        public IEnumerable<ScheduleEntry> ScheduleEntries { get; set; }
     }
 }

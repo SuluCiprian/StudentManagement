@@ -12,5 +12,6 @@ namespace StudentsManagement.Persistence
         void AddStudentToActivity(int activityId, Student student);
 
         IEnumerable<Activity> GetActivities();
+        void AddScheduleEntryToActivity(Activity activity, ScheduleEntry entry);
     }
 }

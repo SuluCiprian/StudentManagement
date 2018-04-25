@@ -50,6 +50,19 @@ namespace StudentsManagement.Authentication
             return signInManager.UserManager.GetUserName(signInManager.Context.User);
         }
 
+        public int GetUserId()
+        {
+            var userName = GetUserName();
+            if (IsUserStudent())
+            {
+                return userService.GetStudentId(userName);
+            }
+            else
+            {
+                return userService.GetTeacherId(userName);
+            }            
+        }
+
         public async Task<bool> Login(string userName, string password, bool remeberUser)
         {
             bool retVal = false;

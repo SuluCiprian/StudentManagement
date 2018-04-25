@@ -50,6 +50,11 @@ namespace StudentsManagement.Persistence.EF
             activity.StudentsLink.Add(activityStudent);
         }
 
+        public void AddScheduleEntryToActivity(Activity activity, ScheduleEntry entry)
+        {
+            activity.Schedule.Add(entry);
+        }
+
         public StudentsManagementContext StudentsManagementContext
         {
             get

@@ -40,6 +40,11 @@ namespace StudentsManagement.Core
             return _unitOfWork.StudentActivityInfo.SearchFor(a => a.ActivityId == activityId);
         }
 
+        public IEnumerable<ScheduleEntry> GetScheduleEntries(int id)
+        {
+            return _unitOfWork.Activities.GetById(id).Schedule.AsEnumerable();
+        }
+
         public IEnumerable<Student> GetStudentsOnActivity(int id)
         {            
             var studentsWithId = _unitOfWork.Activities.GetStudentsByActivityId(id);
@@ -54,6 +59,13 @@ namespace StudentsManagement.Core
         public void CreateActivityForTeacher(int teacherId, Activity activity)
         {
             _unitOfWork.Teachers.CreateActivityForTeacher(teacherId, activity);
+            _unitOfWork.Complete();
+        }
+
+        public void AddScheludleEntryForActivity(int id, ScheduleEntry entry)
+        {
+            var activity = _unitOfWork.Activities.GetById(id);
+            _unitOfWork.Activities.AddScheduleEntryToActivity(activity, entry);
             _unitOfWork.Complete();
         }
 

@@ -54,8 +54,19 @@ namespace StudentActivityMenagement.Controllers
             {
                 return NotFound();
             }
-
-            return View(activity);
+            if (_authenticationService.IsUserStudent())
+            {
+                return View(activity);
+            }
+            else
+            {
+                var userId = _authenticationService.GetUserId();
+                var teacherActivity = new TeacherActivityViewModel();
+                teacherActivity.ActivityInfos = _activitiesService.Details(id);
+                teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(userId);
+                teacherActivity.ScheduleEntries = _activitiesService.GetScheduleEntries(id);
+                return View("TeacherActivity", teacherActivity);
+            }
         }
 
         // GET: Activity/Info/5

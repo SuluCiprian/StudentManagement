@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -35,10 +36,11 @@ namespace StudentActivityMenagement.Controllers
             var id = _authenticationService.GetUserId();
 
             if (_authenticationService.IsUserStudent())
-            {                
+            {
                 var activities = _activitiesService.GetStudentActivities(id);
                 return View(activities);
-            } else
+            }
+            else
             {
                 var activities = _activitiesService.GetTeacherActivities(id);
                 return View(activities);
@@ -65,7 +67,7 @@ namespace StudentActivityMenagement.Controllers
                 var studentActivity = new StudentActivityViewModel();
                 studentActivity.ActivityInfos = activityInfos;
                 studentActivity.Schedules = scheduleEntries;
-                return View("StudentActivity" ,studentActivity);
+                return View("StudentActivity", studentActivity);
             }
             else
             {
@@ -100,19 +102,27 @@ namespace StudentActivityMenagement.Controllers
 
             return View(vm);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(ActivityViewModel activity)
         {
             if (ModelState.IsValid)
             {
-                activity.ActivityTypes = _activitiesService.GetAvailableActivityTypes(); 
-                Activity act = new Activity { Name = activity.Name, Description = activity.Description, Type = activity.SelectedType };
+                ICollection<ScheduleEntry> schedule = new List<ScheduleEntry>();
+                foreach (var dateString in activity.Occurences)
+                {
+                    DateTime dateTime = DateTime.ParseExact(dateString, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    ScheduleEntry scheduleEntry = new ScheduleEntry { Occurence = dateTime };
+                    schedule.Add(scheduleEntry);
+                }
+
+                activity.ActivityTypes = _activitiesService.GetAvailableActivityTypes();
+                Activity act = new Activity { Name = activity.Name, Description = activity.Description, Type = activity.SelectedType, Schedule = schedule };
 
                 var id = _authenticationService.GetUserId();
 
-               // _activitiesService.Create(act);
+                // _activitiesService.Create(act);
                 _activitiesService.CreateActivityForTeacher(id, act);
                 return RedirectToAction(nameof(Index));
             }
@@ -122,7 +132,7 @@ namespace StudentActivityMenagement.Controllers
         public IActionResult AddStudent()
         {
             var students = _studentsService.GetAllStudents();
-            return View("AddStudentToActivity",students);
+            return View("AddStudentToActivity", students);
         }
 
         //[HttpPost]
@@ -155,7 +165,7 @@ namespace StudentActivityMenagement.Controllers
             //    return NotFound();
             //}
 
-             activity.ActivityId = id;
+            activity.ActivityId = id;
 
             if (ModelState.IsValid)
             {

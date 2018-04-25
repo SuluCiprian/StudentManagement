@@ -1,7 +1,7 @@
 ﻿// Write your JavaScript code.
 
 function selectMethod(selectId, text) {
-    $("#" + selectId).append("<option value=" + text + ">" + text + "</option>");
+    $("#" + selectId).append('<option value="' + text + '">' + text + '</option>');
     $("#" + selectId + " option").prop('selected', true);
 }
 

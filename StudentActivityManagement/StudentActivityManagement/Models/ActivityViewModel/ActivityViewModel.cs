@@ -62,6 +62,7 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
         public List<string> Occurences { get; set; }
 
         public List<int> StudentIds { get; set; }
+        public List<string> StudentNames { get; set; }
         public List<Student> Students { get; set; }
     }
 }

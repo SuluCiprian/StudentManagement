@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using StudentsManagement.Domain;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,16 @@ namespace StudentsManagement.Persistence.EF
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<ActivityStudent>().HasKey(a => new { a.ActivityId, a.StudentId });
+            var entityBuilder = builder.Entity<ActivityStudent>();
+
+                entityBuilder                
+                .HasKey(a => new { a.ActivityId, a.StudentId }) ;
+                
+            entityBuilder               
+                .Property(p => p.Id)                
+                .UseSqlServerIdentityColumn();
+
+            
         }
     }
 }

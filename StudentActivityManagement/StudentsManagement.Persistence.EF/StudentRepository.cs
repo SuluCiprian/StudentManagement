@@ -9,10 +9,10 @@ namespace StudentsManagement.Persistence.EF
     public class StudentRepository : Repository<Student>, IStudentRepository
     {
         public StudentRepository(StudentsManagementContext context)
-            :base(context)
+            : base(context)
         {
-             
-        }        
+
+        }
 
         public IEnumerable<Activity> GetActivitiesByStudentId(int studId)
         {
@@ -32,9 +32,35 @@ namespace StudentsManagement.Persistence.EF
             return student;
         }
 
+        public Student GetStudentWithName(string name)
+        {
+            var student = StudentsManagementContext.Students.FirstOrDefault(s => s.Name == name);
+            return student;
+        }
+
         public IEnumerable<Student> GetStudents()
         {
             return StudentsManagementContext.Students.ToList();
+        }
+
+        public ICollection<Student> GetStudentsWithName(ICollection<string> names)
+        {
+            ICollection<Student> students = new List<Student>();
+            foreach (var studentName in names)
+            {
+                students.Add(GetStudentWithName(studentName));
+            }
+            return students;
+        }
+
+        public ICollection<Student> GetStudentsWithUserName(ICollection<string> userNames)
+        {
+            ICollection<Student> students = new List<Student>();
+            foreach (var studentUserName in userNames)
+            {
+                students.Add(GetStudentWithName(studentUserName));
+            }
+            return students;
         }
 
         public StudentsManagementContext StudentsManagementContext

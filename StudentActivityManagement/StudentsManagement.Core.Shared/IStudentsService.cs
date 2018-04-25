@@ -9,5 +9,6 @@ namespace StudentsManagement.Core.Shared
     {
         IEnumerable<Student> GetAllStudents();
         void AddStudentToActivity(int activityId, Student student);
+        ICollection<Student> GetStudentsWithName(ICollection<string> studentNames);
     }
 }

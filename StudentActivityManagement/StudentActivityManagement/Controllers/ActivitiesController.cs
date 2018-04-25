@@ -109,6 +109,8 @@ namespace StudentActivityMenagement.Controllers
         {
             if (ModelState.IsValid)
             {
+                ICollection<Student> studentsList = _studentsService.GetStudentsWithName(activity.StudentNames);
+
                 ICollection<ScheduleEntry> schedule = new List<ScheduleEntry>();
                 foreach (var dateString in activity.Occurences)
                 {
@@ -116,14 +118,19 @@ namespace StudentActivityMenagement.Controllers
                     ScheduleEntry scheduleEntry = new ScheduleEntry { Occurence = dateTime };
                     schedule.Add(scheduleEntry);
                 }
-
                 activity.ActivityTypes = _activitiesService.GetAvailableActivityTypes();
-                Activity act = new Activity { Name = activity.Name, Description = activity.Description, Type = activity.SelectedType, Schedule = schedule };
+                Activity act = new Activity { Id = 0, Name = activity.Name, Description = activity.Description, Type = activity.SelectedType, Schedule = schedule };
+                foreach (var student in studentsList)
+                {
+                    act.StudentsLink = new List<ActivityStudent>();
+                    act.StudentsLink.Add(new ActivityStudent { Id = 0, Activity = act, Student = student });
+                }
 
                 var id = _authenticationService.GetUserId();
 
                 // _activitiesService.Create(act);
                 _activitiesService.CreateActivityForTeacher(id, act);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);

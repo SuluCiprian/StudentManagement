@@ -26,5 +26,10 @@ namespace StudentsManagement.Core
         {
             _unitOfWork.Activities.AddStudentToActivity(activityId, student);
         }
+
+        public ICollection<Student> GetStudentsWithName(ICollection<string> studentNames)
+        {
+            return _unitOfWork.Students.GetStudentsWithName(studentNames);
+        }
     }
 }

@@ -148,7 +148,7 @@ namespace StudentsManagement.Persistence.EF.Migrations
                 });
 
             modelBuilder.Entity("StudentsManagement.Domain.ActivityStudent", b =>
-                {
+                {                    
                     b.HasOne("StudentsManagement.Domain.Activity", "Activity")
                         .WithMany("StudentsLink")
                         .HasForeignKey("ActivityId")
@@ -158,7 +158,7 @@ namespace StudentsManagement.Persistence.EF.Migrations
                         .WithMany("ActivitiesLink")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
+                }) ;
 
             modelBuilder.Entity("StudentsManagement.Domain.ScheduleEntry", b =>
                 {

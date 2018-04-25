@@ -104,5 +104,15 @@ namespace StudentsManagement.Core
         {
             return _unitOfWork.Students.GetById(id) != null ? true : false;
         }
+
+        public void CreateScheduleEntry(ScheduleEntry scheduleEntry)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddStudent(int activityId, Student student)
+        {
+            _unitOfWork.Activities.AddStudentToActivity(activityId, student);
+        }
     }
 }

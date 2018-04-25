@@ -9,5 +9,7 @@ namespace StudentsManagement.Persistence
     {
         IEnumerable<Activity> GetActivitiesByStudentId(int studId);
         Student GetStudentWithUserName(string userName);
+
+        IEnumerable<Student> GetStudents();
     }
 }

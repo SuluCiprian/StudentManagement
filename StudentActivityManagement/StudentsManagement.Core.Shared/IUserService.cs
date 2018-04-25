@@ -11,5 +11,8 @@ namespace StudentsManagement.Core.Shared
         void CreateTeacher(Teacher teacher);
         int GetTeacherId(string userName);
         int GetStudentId(string userName);
+
+        IEnumerable<Student> GetStudents();
+        IEnumerable<Teacher> GetTeacher();
     }
 }

@@ -18,12 +18,14 @@ namespace StudentActivityMenagement.Controllers
         private readonly IActivitiesService _activitiesService;
         private readonly IStudentsService _studentsService;
         private readonly IAuthenticationService _authenticationService;
+        private readonly IUserService userService;
 
-        public ActivitiesController(IActivitiesService activitiesService, IStudentsService studentsService, IAuthenticationService authenticationService)
+        public ActivitiesController(IActivitiesService activitiesService, IStudentsService studentsService, IAuthenticationService authenticationService, IUserService userService)
         {
             _activitiesService = activitiesService;
             _studentsService = studentsService;
             _authenticationService = authenticationService;
+            this.userService = userService;
         }
 
 
@@ -92,10 +94,12 @@ namespace StudentActivityMenagement.Controllers
         {
             ActivityViewModel vm = new ActivityViewModel();
             vm.ActivityTypes = _activitiesService.GetAvailableActivityTypes();
-            
+
+            List<Student> students = userService.GetStudents().ToList();
+            vm.Students = students;
+
             return View(vm);
         }
-
         
         [HttpPost]
         [ValidateAntiForgeryToken]

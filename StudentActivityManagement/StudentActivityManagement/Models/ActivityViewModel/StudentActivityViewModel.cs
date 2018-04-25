@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using StudentsManagement.Domain;
 
 namespace StudentActivityMenagement.Models.ActivityViewModel
 {
-    public class StudentViewModel
+    public class StudentActivityViewModel
     {
-        [Required]
-        public string Name { get; set; }
+        public IEnumerable<StudentActivityInfo> ActivityInfos { get; set; }
 
-        public string UserName { get; set; }
+        public IEnumerable<ScheduleEntry> Schedules { get; set; }
     }
 }

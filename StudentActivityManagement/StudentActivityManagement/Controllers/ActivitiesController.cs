@@ -54,17 +54,24 @@ namespace StudentActivityMenagement.Controllers
             {
                 return NotFound();
             }
+
+            var activityInfos = _activitiesService.Details(id);
+            var scheduleEntries = _activitiesService.GetScheduleEntries(id);
+
             if (_authenticationService.IsUserStudent())
             {
-                return View(activity);
+                var studentActivity = new StudentActivityViewModel();
+                studentActivity.ActivityInfos = activityInfos;
+                studentActivity.Schedules = scheduleEntries;
+                return View("StudentActivity" ,studentActivity);
             }
             else
             {
                 var userId = _authenticationService.GetUserId();
                 var teacherActivity = new TeacherActivityViewModel();
-                teacherActivity.ActivityInfos = _activitiesService.Details(id);
+                teacherActivity.ActivityInfos = activityInfos;
                 teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(userId);
-                teacherActivity.ScheduleEntries = _activitiesService.GetScheduleEntries(id);
+                teacherActivity.ScheduleEntries = scheduleEntries;
                 return View("TeacherActivity", teacherActivity);
             }
         }
@@ -114,19 +121,19 @@ namespace StudentActivityMenagement.Controllers
             return View("AddStudentToActivity",students);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddStudent(int id, StudentViewModel student)
-        {
-            if (ModelState.IsValid)
-            {
-                Student stud = new Student { Name = student.Name, UserName = student.UserName };
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult AddStudent(int id, StudentViewModel student)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Student stud = new Student { Name = student.Name, UserName = student.UserName };
 
-                _studentsService.AddStudentToActivity(id, stud);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(student);
-        }
+        //        _studentsService.AddStudentToActivity(id, stud);
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(student);
+        //}
 
         // GET: Activities/Edit/5
         public IActionResult Edit(int id)

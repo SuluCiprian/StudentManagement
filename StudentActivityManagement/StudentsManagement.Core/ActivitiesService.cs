@@ -31,7 +31,9 @@ namespace StudentsManagement.Core
 
         public void Edit(StudentActivityInfo activityInfo)
         {
-            _unitOfWork.StudentActivityInfo.Insert(activityInfo);
+            var currentActivity =  _unitOfWork.StudentActivityInfo.GetById(activityInfo.Id);            
+            currentActivity.Attendance = activityInfo.Attendance;
+            currentActivity.Grade = activityInfo.Grade;
             _unitOfWork.Complete();
         }
 
@@ -113,6 +115,11 @@ namespace StudentsManagement.Core
         public void AddStudent(int activityId, Student student)
         {
             _unitOfWork.Activities.AddStudentToActivity(activityId, student);
+        }
+
+        public StudentActivityInfo GetActivityInfo(int activityInfoId)
+        {
+            return _unitOfWork.StudentActivityInfo.GetById(activityInfoId);
         }
     }
 }

@@ -71,7 +71,7 @@ namespace StudentActivityMenagement.Controllers
             }
             else
             {
-                var teacherActivity = new TeacherActivityViewModel();                
+                var teacherActivity = new TeacherActivityViewModel();
                 teacherActivity.StudentsOnActivity = _activitiesService.GetStudentsOnActivity(id);
                 teacherActivity.ScheduleEntries = scheduleEntries;
 
@@ -82,15 +82,17 @@ namespace StudentActivityMenagement.Controllers
                     {
                         foreach (var item in teacherActivity.StudentsOnActivity)
                         {
-                            infos.Add(new StudentActivityInfo { ActivityId = id, StudentId = item.Id });
-                        }                        
+                            var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurance = scheduleEntries.ElementAt(i) };
+                            infos.Add(activityInfo);
+                            _activitiesService.Edit(activityInfo);
+                        }
                     }
                     teacherActivity.ActivityInfos = infos;
                 }
                 else
                 {
                     teacherActivity.ActivityInfos = activityInfos;
-                }                
+                }
                 return View("TeacherActivity", teacherActivity);
             }
         }
@@ -137,7 +139,7 @@ namespace StudentActivityMenagement.Controllers
                 Activity act = new Activity { Id = 0, Name = activity.Name, Description = activity.Description, Type = activity.SelectedType, Schedule = schedule };
                 act.StudentsLink = new List<ActivityStudent>();
                 foreach (var student in studentsList)
-                {                    
+                {
                     act.StudentsLink.Add(new ActivityStudent { Activity = act, Student = student });
                 }
 
@@ -172,19 +174,27 @@ namespace StudentActivityMenagement.Controllers
         //}
 
         // GET: Activities/Edit/5
-        public IActionResult Edit(int id)
+        /*public IActionResult Edit(int id)
         {
             return View();
+        }*/
+
+        [HttpGet]
+        [Route("Activities/Edit/{id}", Name = "EditGrades")]
+        public IActionResult Edit(int id)
+        {
+            var vm = _activitiesService.GetActivityInfo(id);
+            return View("Edit", vm);
         }
+
 
         // [Bind("ActivityId,StudentId,Grade,Attendance,Occurance")] StudentsManagement.Domain.StudentActivityInfo activity
         // POST: Activities/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, int studId, [Bind("ActivityId,StudentId,Grade,Attendance,Occurance")] StudentsManagement.Domain.StudentActivityInfo activity)
-        {
-            activity.ActivityId = id;
-            activity.StudentId = studId;
+        [Route("Activities/Edit", Name = "SaveGrades")]
+        public IActionResult Edit(StudentsManagement.Domain.StudentActivityInfo activity)
+        {          
 
             if (ModelState.IsValid)
             {

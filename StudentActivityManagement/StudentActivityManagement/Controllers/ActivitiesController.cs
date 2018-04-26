@@ -200,8 +200,8 @@ namespace StudentActivityMenagement.Controllers
 
             if (ModelState.IsValid)
             {
-                _activitiesService.Edit(activity);
-                return RedirectToAction(nameof(Index));
+               var activityId = _activitiesService.Edit(activity);
+                return RedirectToAction("Details", new { id = activityId });
             }
             return View(activity);
         }

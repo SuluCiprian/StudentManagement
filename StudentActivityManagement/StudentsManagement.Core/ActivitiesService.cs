@@ -29,12 +29,13 @@ namespace StudentsManagement.Core
             return activity;
         }
 
-        public void Edit(StudentActivityInfo activityInfo)
+        public int Edit(StudentActivityInfo activityInfo)
         {
             var currentActivity =  _unitOfWork.StudentActivityInfo.GetById(activityInfo.Id);            
             currentActivity.Attendance = activityInfo.Attendance;
             currentActivity.Grade = activityInfo.Grade;
             _unitOfWork.Complete();
+            return currentActivity.ActivityId;
         }
 
         public IEnumerable<StudentActivityInfo> GetActivityInfos(int activityId)

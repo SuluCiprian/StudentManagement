@@ -10,7 +10,7 @@ namespace StudentsManagement.Core.Shared
         IEnumerable<Activity> Index();
         IEnumerable<StudentActivityInfo> Details(int id);
         void Create(Activity activity);
-        void Edit(StudentActivityInfo activityInfo);
+        int Edit(StudentActivityInfo activityInfo);
         void Insert(StudentActivityInfo activityInfo);
         Activity GetDelete(int id);
         void PostDelete(int id);

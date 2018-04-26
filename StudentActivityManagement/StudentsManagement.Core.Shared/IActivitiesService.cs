@@ -11,6 +11,7 @@ namespace StudentsManagement.Core.Shared
         IEnumerable<StudentActivityInfo> Details(int id);
         void Create(Activity activity);
         void Edit(StudentActivityInfo activityInfo);
+        void Insert(StudentActivityInfo activityInfo);
         Activity GetDelete(int id);
         void PostDelete(int id);
         bool StudentExists(int id);

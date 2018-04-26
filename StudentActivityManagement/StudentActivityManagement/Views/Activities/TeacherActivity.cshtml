@@ -12,7 +12,7 @@
                     <th scope="col" rowspan="2">Student Name</th>
                     @for (int i = 0; i < Model.ScheduleEntries.ToList().Capacity; i++)
                     {
-                        <th scope="col" colspan="3">Activity @i</th>
+                        <th scope="col" colspan="3">@Model.Type @i</th>
                     }
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                             <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
                             <th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>
                             <td>
-                                <a asp-route="EditGrades" asp-route-id="@Model.ActivityInfos.ElementAt(i).Id" asp-route-id1="@Model.StudentsOnActivity.ElementAt(iterator).Id">Edit</a>
+                                <a asp-route="EditGrades" asp-route-id="@Model.ActivityInfos.ElementAt(i).Id">Edit</a>
                             </td>
                         }
                         @{ 

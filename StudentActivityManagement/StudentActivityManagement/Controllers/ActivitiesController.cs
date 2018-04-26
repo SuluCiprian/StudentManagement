@@ -67,6 +67,7 @@ namespace StudentActivityMenagement.Controllers
                 var studentActivity = new StudentActivityViewModel();
                 studentActivity.ActivityInfos = activityInfos;
                 studentActivity.Schedules = scheduleEntries;
+                studentActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
                 return View("StudentActivity", studentActivity);
             }
             else
@@ -84,7 +85,7 @@ namespace StudentActivityMenagement.Controllers
                         {
                             var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurance = scheduleEntries.ElementAt(i) };
                             infos.Add(activityInfo);
-                            _activitiesService.Edit(activityInfo);
+                            _activitiesService.Insert(activityInfo);
                         }
                     }
                     teacherActivity.ActivityInfos = infos;
@@ -93,6 +94,7 @@ namespace StudentActivityMenagement.Controllers
                 {
                     teacherActivity.ActivityInfos = activityInfos;
                 }
+                teacherActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
                 return View("TeacherActivity", teacherActivity);
             }
         }

@@ -121,5 +121,12 @@ namespace StudentsManagement.Core
         {
             return _unitOfWork.StudentActivityInfo.GetById(activityInfoId);
         }
+
+        public void Insert(StudentActivityInfo activityInfo)
+        {
+            _unitOfWork.StudentActivityInfo.Insert(activityInfo);
+            _unitOfWork.Complete();
+            
+        }
     }
 }

@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                @{ 
+                @{
                     int lower = 0;
                     int upper = Model.ScheduleEntries.ToList().Capacity;
                 }
@@ -40,16 +40,24 @@
                         @for (int i = lower; i < upper; i++)
                         {
                             <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
-                            <th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>
+                            @*<th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>*@
+                            @if (Model.ActivityInfos.ElementAt(i).Attendance != 0)
+                            {
+                                <th scope="row">Yes</th>
+                            }
+                            else
+                            {
+                                <th scope="row">No</th>
+                            }
                             <td>
                                 <a asp-route="EditGrades" asp-route-id="@Model.ActivityInfos.ElementAt(i).Id">Edit</a>
                             </td>
                         }
-                        @{ 
+                        @{
                             lower = upper;
                             upper += upper;
                         }
-                        
+
                     </tr>
                 }
 

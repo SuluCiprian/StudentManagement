@@ -37,5 +37,10 @@ namespace StudentsManagement.Core
             var activities = _unitOfWork.Students.GetActivitiesByStudentId(studId);
             return activities;
         }
+
+        public Activity GetActivityById(int id)
+        {
+            return _unitOfWork.Activities.GetById(id);
+        }
     }
 }

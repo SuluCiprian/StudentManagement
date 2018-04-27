@@ -41,33 +41,40 @@ namespace StudentActivityMenagement.Controllers
 
         public IActionResult Details(int id)
         {
-            var activityInfos = _activitiesService.Details(id);
-            var scheduleEntries = _activitiesService.GetScheduleEntries(id);
-
-            var teacherActivity = new TeacherActivityViewModel();
-            teacherActivity.StudentsOnActivity = _teacherService.GetStudentsOnActivity(id);
-            teacherActivity.ScheduleEntries = scheduleEntries;
-
-            if (activityInfos.ToList().Capacity == 0)
+            if (id == 0)
             {
-                List<StudentActivityInfo> infos = new List<StudentActivityInfo>();
-                for (int i = 0; i < scheduleEntries.ToList().Capacity; i++)
-                {
-                    foreach (var item in teacherActivity.StudentsOnActivity)
-                    {
-                        var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurence = scheduleEntries.ElementAt(i) };
-                        infos.Add(activityInfo);
-                        _teacherService.Insert(activityInfo);
-                    }
-                }
-                teacherActivity.ActivityInfos = infos;
+                return RedirectToAction("Index");
             }
             else
             {
-                teacherActivity.ActivityInfos = activityInfos;
+                var activityInfos = _activitiesService.Details(id);
+                var scheduleEntries = _activitiesService.GetScheduleEntries(id);
+
+                var teacherActivity = new TeacherActivityViewModel();
+                teacherActivity.StudentsOnActivity = _teacherService.GetStudentsOnActivity(id);
+                teacherActivity.ScheduleEntries = scheduleEntries;
+
+                if (activityInfos.ToList().Capacity == 0)
+                {
+                    List<StudentActivityInfo> infos = new List<StudentActivityInfo>();
+                    for (int i = 0; i < scheduleEntries.ToList().Capacity; i++)
+                    {
+                        foreach (var item in teacherActivity.StudentsOnActivity)
+                        {
+                            var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurence = scheduleEntries.ElementAt(i) };
+                            infos.Add(activityInfo);
+                            _teacherService.Insert(activityInfo);
+                        }
+                    }
+                    teacherActivity.ActivityInfos = infos;
+                }
+                else
+                {
+                    teacherActivity.ActivityInfos = activityInfos;
+                }
+                // teacherActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
+                return View("TeacherActivity", teacherActivity);
             }
-            // teacherActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
-            return View("TeacherActivity", teacherActivity);
         }
 
         // GET: Activity/Create
@@ -121,10 +128,10 @@ namespace StudentActivityMenagement.Controllers
         {
             Activity activity = _teacherService.getActivity(activityId);
 
-            ActivityViewModel vm = new ActivityViewModel { Name = activity.Name, Description = activity.Description , Students = _teacherService.GetStudentsOnActivity(activityId), SelectedTypeId = activity.Type.Id};
-            vm.ActivityTypes = _teacherService.GetAvailableActivityTypes();            
-            vm.Students = _teacherService.GetStudentsOnActivity(activityId); 
-            vm.Schedule = activity.Schedule; 
+            ActivityViewModel vm = new ActivityViewModel { Name = activity.Name, Description = activity.Description, Students = _teacherService.GetStudentsOnActivity(activityId), SelectedTypeId = activity.Type.Id };
+            vm.ActivityTypes = _teacherService.GetAvailableActivityTypes();
+            vm.Students = _teacherService.GetStudentsOnActivity(activityId);
+            vm.Schedule = activity.Schedule;
             return View("Edit", vm);
         }
 
@@ -140,7 +147,7 @@ namespace StudentActivityMenagement.Controllers
         public IActionResult Edit(int id)
         {
             var vm = _teacherService.GetActivityInfo(id);
-            return View("Edit", vm);
+            return View("EditGrades", vm);
         }
 
         [HttpPost]

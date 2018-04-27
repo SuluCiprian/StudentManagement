@@ -10,13 +10,13 @@
 
                 <tr>
                     <th scope="col" rowspan="2">Student Name</th>
-                    @for (int i = 0; i < Model.ScheduleEntries.ToList().Capacity; i++)
+                    @for (int i = 0; i < Model.ScheduleEntries.Count(); i++)
                     {
                         <th scope="col" colspan="3">@Model.Type @i</th>
                     }
                 </tr>
                 <tr>
-                    @for (int i = 0; i < Model.ScheduleEntries.ToList().Capacity; i++)
+                    @for (int i = 0; i < Model.ScheduleEntries.Count(); i++)
                     {
                         <th scope="col">Grade</th>
                         <th scope="col">Attendance</th>
@@ -28,9 +28,9 @@
             <tbody>
                 @{
                     int lower = 0;
-                    int upper = Model.ScheduleEntries.ToList().Capacity;
+                    int upper = Model.ScheduleEntries.Count();
                 }
-                @for (var iterator = 0; iterator < Model.StudentsOnActivity.ToList().Capacity; iterator++)
+                @for (var iterator = 0; iterator < Model.StudentsOnActivity.Count(); iterator++)
                 {
                     <tr>
                         <th scope="row" rowspan="2">@Model.StudentsOnActivity.ElementAt(iterator).Name</th>
@@ -39,32 +39,39 @@
                     <tr>
                         @for (int i = lower; i < upper; i++)
                         {
-                            <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
-                            @*<th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>*@
-                            @if (Model.ActivityInfos.ElementAt(i).Attendance != 0)
+                            // if (Model.ActivityInfos.Count() > i)
                             {
-                                <th scope="row">Yes</th>
+                                <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
+                                @*<th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>*@
+                                @if (Model.ActivityInfos.ElementAt(i).Attendance != 0)
+                                {
+                                    <th scope="row">Yes</th>
+                                }
+                                else
+                                {
+                                    <th scope="row">No</th>
+                                }
+                                <td>
+                                    <a asp-route="EditGrades" asp-route-id="@Model.ActivityInfos.ElementAt(i).Id">Edit</a>
+                                </td>
                             }
-                            else
-                            {
-                                <th scope="row">No</th>
-                            }
-                            <td>
-                                <a asp-route="EditGrades" asp-route-id="@Model.ActivityInfos.ElementAt(i).Id">Edit</a>
-                            </td>
-                        }
-                        @{
-                            lower = upper;
-                            upper += upper;
-                        }
+
+                        }                       
 
                     </tr>
+                    lower = upper;
+                    upper += Model.ScheduleEntries.Count();
                 }
 
             </tbody>
         </table>
     </div>
 </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }

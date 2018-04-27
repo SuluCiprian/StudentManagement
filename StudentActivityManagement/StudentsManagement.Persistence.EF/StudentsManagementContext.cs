@@ -12,6 +12,7 @@ namespace StudentsManagement.Persistence.EF
         public StudentsManagementContext(DbContextOptions<StudentsManagementContext> options)
             : base(options)
         {
+            
         }
 
         public virtual DbSet<Student> Students { get; set; }
@@ -33,6 +34,11 @@ namespace StudentsManagement.Persistence.EF
                 .Property(p => p.Id)                
                 .UseSqlServerIdentityColumn();
 
+            builder.Entity<Activity>()
+                .HasMany<ScheduleEntry>(se => se.Schedule)
+                .WithOne(a => a.Activity)
+                .OnDelete(DeleteBehavior.Cascade);
+                
             
         }
     }

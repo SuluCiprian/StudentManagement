@@ -63,6 +63,9 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
 
         public List<int> StudentIds { get; set; }
         public List<string> StudentNames { get; set; }
-        public List<Student> Students { get; set; }
+        public IEnumerable<Student> Students { get; set; }
+
+        
+   
     }
 }

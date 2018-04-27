@@ -100,5 +100,11 @@ namespace StudentsManagement.Core
             _unitOfWork.StudentActivityInfo.Insert(activityInfo);
             _unitOfWork.Complete();
         }
+
+        public Activity getActivity(int activityId)
+        {
+            Activity act = _unitOfWork.Activities.GetById(activityId);
+            return act;
+        }
     }
 }

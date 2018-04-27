@@ -39,11 +39,14 @@
                     <tr>
                         @for (int i = lower; i < upper; i++)
                         {
-                            <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
-                            <th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>
-                            <td>
-                                <a asp-route="EditGrades" asp-route-id="@Model.ActivityInfos.ElementAt(i).Id">Edit</a>
-                            </td>
+                            if (@Model.ActivityInfos.Count() > i)
+                            { 
+                                <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
+                                <th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>
+                                <td>
+                                    <a asp-route="EditGrades" asp-route-id="@Model.ActivityInfos.ElementAt(i).Id">Edit</a>
+                                </td>
+                            }
                         }
                         @{ 
                             lower = upper;

@@ -19,8 +19,8 @@ namespace StudentActivityMenagement.Controllers
         private readonly IStudentsService _studentsService;
 
         public TeacherController(
-            IActivitiesService activitiesService, 
-            ITeacherService teacherService, 
+            IActivitiesService activitiesService,
+            ITeacherService teacherService,
             IAuthenticationService authenticationService,
             IStudentsService studentsService,
             IUserService userService)
@@ -55,7 +55,7 @@ namespace StudentActivityMenagement.Controllers
                 {
                     foreach (var item in teacherActivity.StudentsOnActivity)
                     {
-                        var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurance = scheduleEntries.ElementAt(i) };
+                        var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurence = scheduleEntries.ElementAt(i) };
                         infos.Add(activityInfo);
                         _teacherService.Insert(activityInfo);
                     }
@@ -113,6 +113,26 @@ namespace StudentActivityMenagement.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(activity);
+        }
+
+        [HttpGet]
+        [Route("Activities/EditActivity/{activityId}", Name = "EditActivity")]
+        public IActionResult EditActivity(int activityId)
+        {
+            Activity activity = _teacherService.getActivity(activityId);
+
+            ActivityViewModel vm = new ActivityViewModel { Name = activity.Name, Description = activity.Description , Students = _teacherService.GetStudentsOnActivity(activityId), SelectedTypeId = activity.Type.Id};
+            vm.ActivityTypes = _teacherService.GetAvailableActivityTypes();            
+            vm.Students = _teacherService.GetStudentsOnActivity(activityId); 
+            vm.Schedule = activity.Schedule; 
+            return View("Edit", vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditActivity(ActivityViewModel activity)
+        {
+            return null;
         }
 
         [HttpGet]

@@ -10,9 +10,10 @@ using StudentsManagement.Persistence.EF;
 namespace StudentsManagement.Persistence.EF.Migrations
 {
     [DbContext(typeof(StudentsManagementContext))]
-    partial class StudentsManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20180427102837_activity_constraints_update")]
+    partial class activity_constraints_update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,13 +112,13 @@ namespace StudentsManagement.Persistence.EF.Migrations
 
                     b.Property<int>("Grade");
 
-                    b.Property<int>("OccurenceId");
+                    b.Property<int?>("OccuranceId");
 
                     b.Property<int>("StudentId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OccurenceId");
+                    b.HasIndex("OccuranceId");
 
                     b.ToTable("StudentActivityInfo");
                 });
@@ -170,10 +171,9 @@ namespace StudentsManagement.Persistence.EF.Migrations
 
             modelBuilder.Entity("StudentsManagement.Domain.StudentActivityInfo", b =>
                 {
-                    b.HasOne("StudentsManagement.Domain.ScheduleEntry", "Occurence")
+                    b.HasOne("StudentsManagement.Domain.ScheduleEntry", "Occurance")
                         .WithMany()
-                        .HasForeignKey("OccurenceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OccuranceId");
                 });
 #pragma warning restore 612, 618
         }

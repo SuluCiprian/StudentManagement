@@ -21,5 +21,6 @@ namespace StudentsManagement.Core.Shared
         IEnumerable<StudentActivityInfo> GetActivityInfos(int activityId);
         StudentActivityInfo GetActivityInfo(int activityInfoId);
         void AddScheludleEntryForActivity(int id, ScheduleEntry entry);
+        Activity getActivity(int activityId);
     }
 }

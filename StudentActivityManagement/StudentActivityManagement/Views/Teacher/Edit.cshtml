@@ -1,36 +1,89 @@
-﻿@model StudentsManagement.Domain.StudentActivityInfo
+﻿@model StudentActivityMenagement.Models.ActivityViewModel.ActivityViewModel
 @{
     ViewData["Title"] = "Edit";
 }
+@using StudentsManagement.Core.Shared
+@inject IActivitiesService activityService
+
 <h2>Edit</h2>
 <h4>Student</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-route= "SaveGrades" method="post">
+        <form asp-controller="Teacher" asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="Id"/>
-                <div class="form-group">
-                    <label asp-for="Grade" class="control-label"></label>
-                    <input asp-for="Grade" class="form-control" />
-                    <span asp-validation-for="Grade" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Attendance" class="control-label"></label>
-                    <input asp-for="Attendance" class="form-control" />
-                    <span asp-validation-for="Attendance" class="text-danger"></span>
-                </div>
-            
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <label asp-for="SelectedTypeId" class="control-label"></label>
+                <select asp-for="@Model.SelectedTypeId" class="form-control"
+                        asp-items="@Model.ActivityTypesList">                    
+                </select>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Schedule</label>
+                <br>
+                <select asp-for="Occurences" multiple id="occurenceSelect" size="5" class="form-control">
+                    @foreach (var scheduleEntry in Model.Schedule)
+                    { 
+                        <option selected value="@scheduleEntry.Occurence.ToString()">@scheduleEntry.Occurence.ToString()</option>
+                    }
+                </select>
+
+                <input class="form-control" id="dateId" type="date" />
+                <span class="text-danger"></span>
+
+                <button type="button" id="addDateButton" class="btn btn-default">Add Date</button>
+            </div>
+
+            <div class="form-group">
+                <label>Students</label>
+                <br>
+                <select asp-for="StudentNames" id="studentSelect" multiple size="5" class="form-control">
+                    @foreach (var student in Model.Students)
+                    { 
+                        <option selected value="@student.Name">@student.Name</option>
+                    }
+                </select>
+                <div class="form-group">
+                    <input class="form-control" id="studentInput" type="text" placeholder="Student" autocomplete="off">
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+
         </form>
     </div>
 </div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+<script type="text/javascript" src="~/js/autocompleteControl.js"></script>
+<script type="text/javascript">
+                var students = [];
+                @foreach (var student in Model.Students)
+                {
+                    <text>
+                        students.push("@student.Name");
+                    </text>
+                }
+
+                autocomplete(document.getElementById("studentInput"), students);
+
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

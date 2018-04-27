@@ -55,6 +55,7 @@ namespace StudentActivityMenagement
             services.AddScoped<IBusinessLogic, BusinessLogic>();
             services.AddScoped<IActivitiesService, ActivitiesService>();
             services.AddScoped<IStudentsService, StudentsService>();
+            services.AddScoped<ITeacherService, TeacherService>();
             services.AddMvc();
         }
 

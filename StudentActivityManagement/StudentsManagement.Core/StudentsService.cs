@@ -31,5 +31,11 @@ namespace StudentsManagement.Core
         {
             return _unitOfWork.Students.GetStudentsWithName(studentNames);
         }
+
+        public IEnumerable<Activity> GetStudentActivities(int studId)
+        {
+            var activities = _unitOfWork.Students.GetActivitiesByStudentId(studId);
+            return activities;
+        }
     }
 }

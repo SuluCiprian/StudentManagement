@@ -44,6 +44,7 @@ namespace StudentActivityMenagement.Controllers
             var studentActivity = new StudentActivityViewModel();
             studentActivity.ActivityInfos = activityInfos;
             studentActivity.Schedules = scheduleEntries;
+            ViewData["Name"] = "Activity 1";
             //studentActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
             return View("StudentActivity", studentActivity);
 

@@ -67,5 +67,42 @@ namespace StudentsManagement.Persistence.EF
         {
             return StudentsManagementContext.Activities.AsEnumerable();                
         }
+
+        public void RemoveStudentFromActivity(int activityId, Student student)
+        {
+            var studentsLink = StudentsManagementContext.ActivityStudents.SingleOrDefault(a => a.ActivityId == activityId && a.StudentId == student.Id);
+            StudentsManagementContext.ActivityStudents.Remove(studentsLink);
+            StudentsManagementContext.SaveChanges();
+        }
+
+        public void RemoveScheduleEntryFromActivity(Activity activity, ScheduleEntry scheduleEntry)
+        {
+            activity.Schedule.Remove(scheduleEntry);
+        }
+
+        public bool IsStudentSubscribedToActivity(Activity activity, Student student)
+        {
+            bool retVal = true;
+            var studentsLink = StudentsManagementContext.ActivityStudents.SingleOrDefault(a => a.ActivityId == activity.Id && a.StudentId == student.Id);
+            
+            if(studentsLink == null)
+            {
+                retVal = false;
+            }
+
+            return retVal;
+        }
+
+        public bool DoesActivityHaveScheduleOn(Activity activity, ScheduleEntry scheduleEntry)
+        {
+            bool retVal = true;
+
+            if(!activity.Schedule.Contains(scheduleEntry))
+            {
+                retVal = false;
+            }
+
+            return retVal;
+        }
     }
 }

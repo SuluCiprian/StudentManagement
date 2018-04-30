@@ -128,18 +128,46 @@ namespace StudentActivityMenagement.Controllers
         {
             Activity activity = _teacherService.getActivity(activityId);
 
-            ActivityViewModel vm = new ActivityViewModel { Name = activity.Name, Description = activity.Description, Students = _teacherService.GetStudentsOnActivity(activityId), SelectedTypeId = activity.Type.Id };
+            ActivityViewModel vm = new ActivityViewModel { Id = activity.Id, Name = activity.Name, Description = activity.Description, Students = _teacherService.GetStudentsOnActivity(activityId), SelectedTypeId = activity.Type.Id };
             vm.ActivityTypes = _teacherService.GetAvailableActivityTypes();
-            vm.Students = _teacherService.GetStudentsOnActivity(activityId);
+
+            List<Student> students = userService.GetStudents().ToList();
+            vm.Students = students;
+
+            vm.StudentsInActivity = _teacherService.GetStudentsOnActivity(activityId);
             vm.Schedule = activity.Schedule;
             return View("Edit", vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditActivity(ActivityViewModel activity)
+        [Route("Activities/EditActivity", Name = "SaveActivity")]
+        public IActionResult EditActivity(ActivityViewModel activityViewModel)
         {
-            return null;
+            if (ModelState.IsValid)
+            {
+                Activity activity = _teacherService.getActivity(activityViewModel.Id);
+                activity.Name = activityViewModel.Name;
+                activity.Description = activityViewModel.Description;
+                activity.Type = activityViewModel.SelectedType;
+
+                ICollection<ScheduleEntry> schedule = new List<ScheduleEntry>();
+                foreach (var dateString in activityViewModel.Occurences)
+                {
+                    DateTime dateTime = DateTime.ParseExact(dateString, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    ScheduleEntry scheduleEntry = new ScheduleEntry { Occurence = dateTime, ActivityId = activityViewModel.Id};
+                    schedule.Add(scheduleEntry);
+                }
+
+                _teacherService.UpdateSchedule(activityViewModel.Id, schedule);
+
+                _teacherService.UpdateSubscribedStudents(activityViewModel.Id, activityViewModel.StudentNames);
+
+                _teacherService.EditActivity(activity);
+
+                return RedirectToAction("Index");
+            }
+            return View(activityViewModel);
         }
 
         [HttpGet]

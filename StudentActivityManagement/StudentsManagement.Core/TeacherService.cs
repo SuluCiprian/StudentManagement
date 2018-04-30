@@ -106,5 +106,88 @@ namespace StudentsManagement.Core
             Activity act = _unitOfWork.Activities.GetById(activityId);
             return act;
         }
+
+        public void EditActivity(Activity activity)
+        {
+            Activity activityToUpdate = _unitOfWork.Activities.GetById(activity.Id);
+            activityToUpdate.Name = activity.Name;
+            activityToUpdate.Description = activityToUpdate.Description;
+            activityToUpdate.Type = activity.Type;
+            activityToUpdate.Schedule = activity.Schedule;
+            activityToUpdate.StudentsLink = activity.StudentsLink;
+
+            _unitOfWork.Complete();
+        }
+
+        public void UpdateSubscribedStudents(int activityId, ICollection<string> studentNames)
+        {
+            Activity act = _unitOfWork.Activities.GetById(activityId);
+            ICollection<Student> studentsToUpdate = _unitOfWork.Students.GetStudentsWithName(studentNames);
+            ICollection<Student> studentsInActivity = GetStudentsOnActivity(activityId).ToList();
+
+            foreach (var student in studentsInActivity)
+            {
+                if (!studentsToUpdate.Contains(student))
+                {
+                    _unitOfWork.Activities.RemoveStudentFromActivity(activityId, student);
+                }
+            }
+
+            foreach (var student in studentsToUpdate)
+            {
+                if (!IsStudentSubscribedToActivity(activityId, student))
+                {
+                    _unitOfWork.Activities.AddStudentToActivity(activityId, student);
+                }
+            }
+
+            _unitOfWork.Complete();
+        }
+
+        public void RemoveStudent(int activityId, Student student)
+        {
+            var activity = _unitOfWork.Activities.GetById(activityId);
+
+
+            _unitOfWork.Activities.Delete(activity);
+            _unitOfWork.Complete();
+        }
+
+        public void UpdateSchedule(int activityId, ICollection<ScheduleEntry> schedule)
+        {
+            Activity act = _unitOfWork.Activities.GetById(activityId);
+            ICollection<ScheduleEntry> currentSchedule = act.Schedule;
+
+            foreach (var scheduleEntry in currentSchedule)
+            {
+                if (!schedule.Contains(scheduleEntry))
+                {
+                    _unitOfWork.Activities.RemoveScheduleEntryFromActivity(act, scheduleEntry);
+                }
+            }
+            foreach (var scheduleEntry in schedule)
+            {
+                if (!DoesActivityHaveScheduleOn(activityId, scheduleEntry))
+                {
+                    _unitOfWork.Activities.AddScheduleEntryToActivity(act, scheduleEntry);
+                }
+            }
+
+            _unitOfWork.Complete();
+        }
+
+        public bool DoesActivityHaveScheduleOn(int activityId, ScheduleEntry scheduleEntry)
+        {
+            Activity act = _unitOfWork.Activities.GetById(activityId);
+
+            return _unitOfWork.Activities.DoesActivityHaveScheduleOn(act, scheduleEntry);
+        }
+
+        public bool IsStudentSubscribedToActivity(int activityId, Student student)
+        {
+            Activity act = _unitOfWork.Activities.GetById(activityId);
+
+            return _unitOfWork.Activities.IsStudentSubscribedToActivity(act, student);
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
     {
         private IEnumerable<ActivityType> activityTypes;
 
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -65,7 +67,9 @@ namespace StudentActivityMenagement.Models.ActivityViewModel
         public List<string> StudentNames { get; set; }
         public IEnumerable<Student> Students { get; set; }
 
-        
-   
+        public IEnumerable<Student> StudentsInActivity { get; set; }
+
+
+
     }
 }

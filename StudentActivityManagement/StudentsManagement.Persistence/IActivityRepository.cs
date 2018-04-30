@@ -10,8 +10,13 @@ namespace StudentsManagement.Persistence
         IEnumerable<ActivityType> GetAvailableActivityTypes();
         IEnumerable<Student> GetStudentsByActivityId(int id);
         void AddStudentToActivity(int activityId, Student student);
+        void RemoveStudentFromActivity(int activityId, Student student);
 
         IEnumerable<Activity> GetActivities();
         void AddScheduleEntryToActivity(Activity activity, ScheduleEntry entry);
+        void RemoveScheduleEntryFromActivity(Activity activity, ScheduleEntry scheduleEntry);
+
+        bool DoesActivityHaveScheduleOn(Activity activity, ScheduleEntry scheduleEntry);
+        bool IsStudentSubscribedToActivity(Activity activity, Student student);
     }
 }

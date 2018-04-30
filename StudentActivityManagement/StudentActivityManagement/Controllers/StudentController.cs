@@ -47,7 +47,6 @@ namespace StudentActivityMenagement.Controllers
 
             var act = _studentsService.GetActivityById(id);
             ViewData["Name"] = act.Type.Name + " " + act.Name;
-            //studentActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
             return View("StudentActivity", studentActivity);
 
         }

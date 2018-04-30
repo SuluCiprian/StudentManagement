@@ -72,7 +72,8 @@ namespace StudentActivityMenagement.Controllers
                 {
                     teacherActivity.ActivityInfos = activityInfos;
                 }
-                // teacherActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
+                var act = _studentsService.GetActivityById(id);
+                ViewData["Name"] = act.Type.Name;
                 return View("TeacherActivity", teacherActivity);
             }
         }

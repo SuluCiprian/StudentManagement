@@ -12,7 +12,7 @@
                     <th scope="col" rowspan="2">Student Name</th>
                     @for (int i = 0; i < Model.ScheduleEntries.Count(); i++)
                     {
-                        <th scope="col" colspan="3">@Model.Type @i</th>
+                        <th scope="col" colspan="3">@ViewData["Name"] @i</th>
                     }
                 </tr>
                 <tr>

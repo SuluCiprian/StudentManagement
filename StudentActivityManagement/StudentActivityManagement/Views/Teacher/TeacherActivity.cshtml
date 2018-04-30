@@ -41,7 +41,15 @@
                         {
                             // if (Model.ActivityInfos.Count() > i)
                             {
-                                <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
+
+                                @if (Model.ActivityInfos.ElementAt(i).Attendance != 0)
+                                {
+                                    <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
+                                }
+                                else
+                                {
+                                    <th scope="row">-</th>
+                                }
                                 @*<th scope="row">@Model.ActivityInfos.ElementAt(i).Attendance</th>*@
                                 @if (Model.ActivityInfos.ElementAt(i).Attendance != 0)
                                 {
@@ -56,7 +64,7 @@
                                 </td>
                             }
 
-                        }                       
+                        }
 
                     </tr>
                     lower = upper;

@@ -38,10 +38,11 @@ namespace StudentActivityMenagement.Controllers
             {
                 return NotFound();
             }
-            var activityInfos = _activitiesService.Details(id);
+            var studId = _authenticationService.GetUserId();
+            var activityInfos = _activitiesService.Details(id).Where(a => a.StudentId == studId).ToList();
             var scheduleEntries = _activitiesService.GetScheduleEntries(id);
 
-            var studentActivity = new StudentActivityViewModel();
+            var studentActivity = new StudentActivityViewModel();            
             studentActivity.ActivityInfos = activityInfos;
             studentActivity.Schedules = scheduleEntries;
 

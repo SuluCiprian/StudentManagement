@@ -57,16 +57,17 @@ namespace StudentActivityMenagement.Controllers
                 if (activityInfos.ToList().Capacity == 0)
                 {
                     List<StudentActivityInfo> infos = new List<StudentActivityInfo>();
-                    for (int i = 0; i < scheduleEntries.ToList().Capacity; i++)
+                    foreach (var item in teacherActivity.StudentsOnActivity)
                     {
-                        foreach (var item in teacherActivity.StudentsOnActivity)
+                        for (int i = 0; i < scheduleEntries.ToList().Capacity; i++)
                         {
                             var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurence = scheduleEntries.ElementAt(i) };
                             infos.Add(activityInfo);
                             _teacherService.Insert(activityInfo);
                         }
                     }
-                    teacherActivity.ActivityInfos = infos;
+
+                        teacherActivity.ActivityInfos = infos;
                 }
                 else
                 {

@@ -24,7 +24,7 @@ namespace StudentsManagement.Core.Shared
         void AddScheludleEntryForActivity(int id, ScheduleEntry entry);
         Activity getActivity(int activityId);
 
-        void EditActivity(Activity activity);
+        void UpdateActivityPrimaryData(Activity activity);
 
         void UpdateSubscribedStudents(int activityId, ICollection<string> studentNames);
         void UpdateSchedule(int activityId, ICollection<ScheduleEntry> schedule);

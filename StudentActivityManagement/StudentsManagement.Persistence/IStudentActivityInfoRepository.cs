@@ -7,5 +7,6 @@ namespace StudentsManagement.Persistence
 {
     public interface IStudentActivityInfoRepository: IRepository<StudentActivityInfo>
     {
+        StudentActivityInfo GetScheduledActivityInfo(Student student, ScheduleEntry scheduleEntry);
     }
 }

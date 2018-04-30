@@ -107,16 +107,45 @@ namespace StudentsManagement.Core
             return act;
         }
 
-        public void EditActivity(Activity activity)
+        public void UpdateActivityPrimaryData(Activity activity)
         {
             Activity activityToUpdate = _unitOfWork.Activities.GetById(activity.Id);
             activityToUpdate.Name = activity.Name;
             activityToUpdate.Description = activityToUpdate.Description;
             activityToUpdate.Type = activity.Type;
-            activityToUpdate.Schedule = activity.Schedule;
-            activityToUpdate.StudentsLink = activity.StudentsLink;
 
             _unitOfWork.Complete();
+        }
+
+        private void GenerateActivityInfoDetails(Activity activity)
+        {
+            var subscribedStudents = GetStudentsOnActivity(activity.Id);
+
+            foreach(var scheduleEntry in activity.Schedule)
+            {
+                foreach(var student in subscribedStudents)
+                {
+                    if(!StudentHasActivityInfo(student, scheduleEntry))
+                    {
+                        StudentActivityInfo studentActivityInfo = new StudentActivityInfo { ActivityId = activity.Id, Occurence = scheduleEntry, StudentId = student.Id };
+                        _unitOfWork.StudentActivityInfo.Insert(studentActivityInfo);
+                    }
+                }
+            }
+        }
+
+        private bool StudentHasActivityInfo(Student student, ScheduleEntry scheduleEntry)
+        {
+            bool retVal = false;
+
+            var studentActivityInfo = _unitOfWork.StudentActivityInfo.GetScheduledActivityInfo(student, scheduleEntry);
+
+            if(studentActivityInfo!= null)
+            {
+                retVal = true;
+            }
+
+            return retVal;
         }
 
         public void UpdateSubscribedStudents(int activityId, ICollection<string> studentNames)
@@ -141,6 +170,7 @@ namespace StudentsManagement.Core
                 }
             }
 
+            GenerateActivityInfoDetails(act);
             _unitOfWork.Complete();
         }
 
@@ -173,6 +203,7 @@ namespace StudentsManagement.Core
                 }
             }
 
+            GenerateActivityInfoDetails(act);
             _unitOfWork.Complete();
         }
 

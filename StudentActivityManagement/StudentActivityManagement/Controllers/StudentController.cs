@@ -38,16 +38,16 @@ namespace StudentActivityMenagement.Controllers
             {
                 return NotFound();
             }
-            var activityInfos = _activitiesService.Details(id);
+            var studId = _authenticationService.GetUserId();
+            var activityInfos = _activitiesService.Details(id).Where(a => a.StudentId == studId).ToList();
             var scheduleEntries = _activitiesService.GetScheduleEntries(id);
 
-            var studentActivity = new StudentActivityViewModel();
+            var studentActivity = new StudentActivityViewModel();            
             studentActivity.ActivityInfos = activityInfos;
             studentActivity.Schedules = scheduleEntries;
 
             var act = _studentsService.GetActivityById(id);
             ViewData["Name"] = act.Type.Name + " " + act.Name;
-            //studentActivity.Type = activity.ToList()[1].Occurance.Activity.Type.Name;
             return View("StudentActivity", studentActivity);
 
         }

@@ -18,8 +18,15 @@
                 {
                     <tr>
                         <th scope="row">@Model.Schedules.ElementAt(i).Occurence</th>
-                        <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
-                        @if(Model.ActivityInfos.ElementAt(i).Attendance != 0)
+                        @if (Model.ActivityInfos.ElementAt(i).Attendance != 0)
+                        {
+                            <th scope="row">@Model.ActivityInfos.ElementAt(i).Grade</th>
+                        }
+                        else
+                        {
+                            <th scope="row">-</th>
+                        }
+                        @if (Model.ActivityInfos.ElementAt(i).Attendance != 0)
                         {
                             <th scope="row">Yes</th>
                         }

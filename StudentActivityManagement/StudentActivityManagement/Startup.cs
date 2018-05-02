@@ -52,7 +52,6 @@ namespace StudentActivityMenagement
             services.AddScoped<IEmailSender, EmailSender>(instance => new EmailSender());
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IAuthenticationInitializeService, AuthenticationInitializeService>();
-            services.AddScoped<IBusinessLogic, BusinessLogic>();
             services.AddScoped<IActivitiesService, ActivitiesService>();
             services.AddScoped<IStudentsService, StudentsService>();
             services.AddScoped<ITeacherService, TeacherService>();

@@ -23,15 +23,12 @@ namespace StudentActivityMenagement.Controllers
     {
         private readonly StudentsManagement.Core.Shared.IAuthenticationService authenticationService;
         private readonly ILogger logger;
-        private readonly IBusinessLogic businessLogic;
 
         public AccountController(
             StudentsManagement.Core.Shared.IAuthenticationService authService,
-            IBusinessLogic businessLogic,
             ILogger<AccountController> logger)
         {
             this.authenticationService = authService;
-            this.businessLogic = businessLogic;
             this.logger = logger;
         }
 

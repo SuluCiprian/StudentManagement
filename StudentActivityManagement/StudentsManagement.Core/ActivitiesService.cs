@@ -27,7 +27,5 @@ namespace StudentsManagement.Core
             var activity = _unitOfWork.StudentActivityInfo.SearchFor(a => a.ActivityId == id).ToList();
             return activity;
         }
-
-       
     }
 }

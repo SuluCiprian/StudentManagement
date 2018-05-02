@@ -16,18 +16,15 @@ namespace StudentsManagement.Authentication
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IEmailSender emailSender;
         private readonly ILogger logger;
-        private readonly IBusinessLogic businessLogic;
         private readonly IUserService userService;
 
         public AuthenticationService(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            IBusinessLogic businessLogic,
             ILogger<AuthenticationService> logger,
             IUserService userService)
         {
-            this.businessLogic = businessLogic;
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.emailSender = emailSender;

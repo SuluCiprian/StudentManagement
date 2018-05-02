@@ -41,13 +41,12 @@ namespace StudentActivityMenagement.Controllers
 
         public IActionResult Details(int id)
         {
-            if (id == 0)
+            if (id == 0 || (_teacherService.getActivity(id) == null))
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                //var activityInfos = _activitiesService.Details(id);
                 var scheduleEntries = _activitiesService.GetScheduleEntries(id);
 
                 var teacherActivity = new TeacherActivityViewModel();
@@ -55,25 +54,6 @@ namespace StudentActivityMenagement.Controllers
                 teacherActivity.ScheduleEntries = scheduleEntries;
                 teacherActivity.ActivityInfos = _teacherService.GetActivityInfos(id);
 
-                //if (activityInfos.ToList().Count == 0)
-                //{
-                //    List<StudentActivityInfo> infos = new List<StudentActivityInfo>();
-                //    foreach (var item in teacherActivity.StudentsOnActivity)
-                //    {
-                //        for (int i = 0; i < scheduleEntries.ToList().Count; i++)
-                //        {
-                //            var activityInfo = new StudentActivityInfo { ActivityId = id, StudentId = item.Id, Occurence = scheduleEntries.ElementAt(i) };
-                //            infos.Add(activityInfo);
-                //            _teacherService.Insert(activityInfo);
-                //        }
-                //    }
-
-                //        teacherActivity.ActivityInfos = infos;
-                //}
-                //else
-                //{
-                //    teacherActivity.ActivityInfos = activityInfos;
-                //}
                 var act = _studentsService.GetActivityById(id);
                 ViewData["Name"] = act.Type.Name;
                 return View("TeacherActivity", teacherActivity);

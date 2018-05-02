@@ -48,10 +48,11 @@ namespace StudentActivityMenagement.Controllers
             else
             {
                 var scheduleEntries = _activitiesService.GetScheduleEntries(id);
+                var orderedScheduleEntries = scheduleEntries.OrderBy(o => o.Occurence);
 
                 var teacherActivity = new TeacherActivityViewModel();
                 teacherActivity.StudentsOnActivity = _teacherService.GetStudentsOnActivity(id);
-                teacherActivity.ScheduleEntries = scheduleEntries;
+                teacherActivity.ScheduleEntries = orderedScheduleEntries;
                 teacherActivity.ActivityInfos = _teacherService.GetActivityInfos(id);
 
                 var act = _studentsService.GetActivityById(id);

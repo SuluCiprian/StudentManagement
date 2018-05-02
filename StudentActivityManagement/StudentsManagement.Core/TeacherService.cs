@@ -21,6 +21,9 @@ namespace StudentsManagement.Core
         {
             _unitOfWork.Teachers.CreateActivityForTeacher(teacherId, activity);
             _unitOfWork.Complete();
+
+            GenerateActivityInfoDetails(activity);
+            _unitOfWork.Complete();
         }
 
         public IEnumerable<Activity> GetTeacherActivities(int teachId)
